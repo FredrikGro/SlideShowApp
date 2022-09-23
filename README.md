@@ -13,6 +13,7 @@
 ## Använda Expo-komponenter
 
 - ImagePicker
+- StatusBar
 
 ## Krav
 
