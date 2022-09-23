@@ -7,4 +7,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  mb40: {
+    marginBottom: 40,
+  },
 });
