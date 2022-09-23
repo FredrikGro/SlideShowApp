@@ -15,21 +15,24 @@ declare global {
 }
 
 export type RootStackParamList = {
-  HomeScreen: undefined;
-  LoginScreen: undefined;
-  NewProjectScreen: undefined;
-  ProjectNavigationScreen: undefined;
-  ProjectsScreen: undefined;
-  SignInScreen: undefined;
+  Home: undefined;
+  LogIn: undefined;
+  NewProject: undefined;
+  ProjectNavigation: undefined;
+  Projects: undefined;
+  SignIn: undefined;
 };
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
     <NavigationContainer>
       <StatusBar style="auto" />
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={({ route }) => ({ headerTitle: route.name })}
+      >
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="SignIn" component={SignIn} />
