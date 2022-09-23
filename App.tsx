@@ -1,20 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar } from "expo-status-bar";
+import Home from "./screens/HomeScreen";
+import LogIn from "./screens/LogInScreen";
+import NewProjectScreen from "./screens/NewProjectScreen";
+import ProjectNavigation from "./screens/ProjectNavigationScreen";
+import Projects from "./screens/ProjectsScreen";
+import SignIn from "./screens/SignInScreen";
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamList {}
+  }
+}
+
+export type RootStackParamList = {
+  Home: undefined;
+  LogIn: undefined;
+  NewProject: undefined;
+  ProjectNavigation: undefined;
+  Projects: undefined;
+  SignIn: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <NavigationContainer>
       <StatusBar style="auto" />
-    </View>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={({ route }) => ({ headerTitle: route.name })}
+      >
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="LogIn" component={LogIn} />
+        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="ProjectNavigation" component={ProjectNavigation} />
+        <Stack.Screen name="NewProject" component={NewProjectScreen} />
+        <Stack.Screen name="Projects" component={Projects} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
