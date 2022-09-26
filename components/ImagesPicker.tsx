@@ -4,8 +4,6 @@ import { FlatList, Image, SafeAreaView, StyleSheet, View } from "react-native";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import GlobalButton from "./GlobalButton";
 
-//TODO: Implement picture from camera?
-
 export default function ImagesPicker() {
   const [images, setImages] = useState<any>([]);
 
@@ -17,11 +15,8 @@ export default function ImagesPicker() {
       quality: 1,
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       setImages([...images, result.uri]);
-      console.log(images);
     }
   };
 
@@ -35,7 +30,6 @@ export default function ImagesPicker() {
 
     if (!camera_result.cancelled) {
       setImages([...images, camera_result.uri]);
-      console.log(images);
     }
   };
 
