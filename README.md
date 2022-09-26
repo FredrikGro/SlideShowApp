@@ -14,6 +14,7 @@
 
 - ImagePicker
 - StatusBar
+- Camera
 
 ## Krav
 
