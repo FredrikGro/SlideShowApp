@@ -10,7 +10,7 @@ import {
   View,
 } from "react-native";
 
-export default function App() {
+export default function CameraScreen() {
   const [type, setType] = useState(CameraType.front);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [camera, setCamera] = useState<Camera>();
