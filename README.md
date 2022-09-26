@@ -9,6 +9,8 @@
 - Button
 - Text
 - View
+- TouchableOpacity
+- StyleSheet
 
 ## Använda Expo-komponenter
 
