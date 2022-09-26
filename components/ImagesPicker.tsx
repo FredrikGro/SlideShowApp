@@ -25,6 +25,20 @@ export default function ImagesPicker() {
     }
   };
 
+  const takePhoto = async () => {
+    let camera_result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!camera_result.cancelled) {
+      setImages([...images, camera_result.uri]);
+      console.log(images);
+    }
+  };
+
   return (
     <View style={{ flex: 1, flexDirection: "row" }}>
       <SafeAreaView
@@ -59,10 +73,11 @@ export default function ImagesPicker() {
       />
 
       <AntDesign
-        style={styles.icon_right}
         name="camera"
         size={30}
         color="black"
+        onPress={takePhoto}
+        style={styles.icon_right}
       />
     </View>
   );
