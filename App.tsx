@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
+import CameraScreen from "./screens/CameraScreen";
 import Home from "./screens/HomeScreen";
 import LogIn from "./screens/LogInScreen";
 import NewProjectScreen from "./screens/NewProjectScreen";
@@ -21,6 +22,7 @@ export type RootStackParamList = {
   ProjectNavigation: undefined;
   Projects: undefined;
   SignIn: undefined;
+  CameraScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -39,6 +41,7 @@ export default function App() {
         <Stack.Screen name="ProjectNavigation" component={ProjectNavigation} />
         <Stack.Screen name="NewProject" component={NewProjectScreen} />
         <Stack.Screen name="Projects" component={Projects} />
+        <Stack.Screen name="CameraScreen" component={CameraScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
