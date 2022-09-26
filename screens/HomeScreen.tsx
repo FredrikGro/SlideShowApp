@@ -12,6 +12,10 @@ export default function Home({ navigation }: Props) {
         <Button title="Sign In" onPress={() => navigation.navigate("SignIn")} />
       </View>
       <Button title="Log In" onPress={() => navigation.navigate("LogIn")} />
+      <Button
+        title="New Project"
+        onPress={() => navigation.navigate("NewProject")}
+      />
     </View>
   );
 }
