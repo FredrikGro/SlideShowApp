@@ -2,6 +2,7 @@ import React, { useState, FunctionComponent } from "react";
 import styled from "styled-components/native";
 import { InputProps } from "./types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {View} from "react-native";
 
 import { colors } from "../colors";
 import SmallText from "../Texts/SmallText";
@@ -49,6 +50,7 @@ const StylesTextInput: FunctionComponent<InputProps> = ({
   label,
   icon,
   isPassword,
+  error,
   ...props
 }) => {
   const [inputBackgroundColor, setInputBackgroundColor] = useState(primary);
@@ -68,7 +70,10 @@ const StylesTextInput: FunctionComponent<InputProps> = ({
       <LeftIcon>
         <MaterialCommunityIcons name={icon} size={30} color={accent} />
       </LeftIcon>
-      <SmallText>{label}</SmallText>
+      <View style={{justifyContent: "space-between", flexDirection: "row"}}>
+        <SmallText>{label}</SmallText>
+        {error ? <SmallText>{error}</SmallText> : null}
+      </View>
       <InputField
         {...props}
         placeholderTextColor={gray}
@@ -78,11 +83,17 @@ const StylesTextInput: FunctionComponent<InputProps> = ({
         secureTextEntry={isPassword && hidePassword}
       />
       {isPassword && (
-      <RightIcon onPress={()=>{
-        setHidePassword(!hidePassword)
-      }}>
-        <MaterialCommunityIcons name={hidePassword ? "eye-off" : "eye"} size={30} color={black} />
-      </RightIcon>
+        <RightIcon
+          onPress={() => {
+            setHidePassword(!hidePassword);
+          }}
+        >
+          <MaterialCommunityIcons
+            name={hidePassword ? "eye-off" : "eye"}
+            size={30}
+            color={black}
+          />
+        </RightIcon>
       )}
     </InputWrapper>
   );
