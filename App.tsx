@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import CameraScreen from "./screens/CameraScreen";
 import Home from "./screens/HomeScreen";
 import LogIn from "./screens/LogInScreen";
@@ -29,20 +30,25 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <StatusBar style="auto" />
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={({ route }) => ({ headerTitle: route.name })}
-      >
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="LogIn" component={LogIn} />
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="ProjectNavigation" component={ProjectNavigation} />
-        <Stack.Screen name="NewProject" component={NewProjectScreen} />
-        <Stack.Screen name="Projects" component={Projects} />
-        <Stack.Screen name="CameraScreen" component={CameraScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <StatusBar style="auto" />
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={({ route }) => ({ headerTitle: route.name })}
+        >
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="LogIn" component={LogIn} />
+          <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen
+            name="ProjectNavigation"
+            component={ProjectNavigation}
+          />
+          <Stack.Screen name="NewProject" component={NewProjectScreen} />
+          <Stack.Screen name="Projects" component={Projects} />
+          <Stack.Screen name="CameraScreen" component={CameraScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
