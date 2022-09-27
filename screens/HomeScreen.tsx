@@ -1,18 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Button, View } from "react-native";
+import { RootStackParamList } from "../App";
+import { styles } from "../styles";
 
-export default function Home() {
+type Props = NativeStackScreenProps<RootStackParamList, "Home">;
+
+export default function Home({ navigation }: Props) {
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <View style={styles.mb40}>
+        <Button title="Sign In" onPress={() => navigation.navigate("SignIn")} />
+      </View>
+      <Button title="Log In" onPress={() => navigation.navigate("LogIn")} />
+      <Button
+        title="New Project"
+        onPress={() => navigation.navigate("NewProject")}
+      />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
