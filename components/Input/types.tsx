@@ -6,6 +6,7 @@ interface ExtraInputProps {
   label: ReactNode;
   icon: ComponentProps<typeof MaterialCommunityIcons>["name"];
   isPassword?: boolean;
+  error: any;
 }
 
 export type InputProps = TextInputProps & ExtraInputProps;
