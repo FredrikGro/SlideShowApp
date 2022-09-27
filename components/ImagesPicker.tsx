@@ -4,8 +4,6 @@ import { FlatList, Image, SafeAreaView, StyleSheet, View } from "react-native";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import GlobalButton from "./GlobalButton";
 
-//TODO: Implement picture from camera?
-
 export default function ImagesPicker() {
   const [images, setImages] = useState<any>([]);
 
@@ -17,11 +15,21 @@ export default function ImagesPicker() {
       quality: 1,
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       setImages([...images, result.uri]);
-      console.log(images);
+    }
+  };
+
+  const takePhoto = async () => {
+    let camera_result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!camera_result.cancelled) {
+      setImages([...images, camera_result.uri]);
     }
   };
 
@@ -59,10 +67,11 @@ export default function ImagesPicker() {
       />
 
       <AntDesign
-        style={styles.icon_right}
         name="camera"
         size={30}
         color="black"
+        onPress={takePhoto}
+        style={styles.icon_right}
       />
     </View>
   );
