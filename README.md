@@ -17,6 +17,14 @@
 - ImagePicker
 - StatusBar
 - Camera
+- MaterialCommunityIcons
+
+
+## Övriga använda komponenter
+
+- Formik
+- Yup
+
 
 ## Krav
 
