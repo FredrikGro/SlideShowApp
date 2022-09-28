@@ -12,6 +12,7 @@ import { Entypo, AntDesign } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import GlobalButton from "../components/GlobalButton";
 
+
 export default function NewProject() {
   const [images, setImages] = useState<string[]>([]);
 

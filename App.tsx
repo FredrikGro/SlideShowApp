@@ -12,6 +12,10 @@ import ProjectName from "./screens/ProjectNameScreen";
 import ProjectNavigation from "./screens/ProjectNavigationScreen";
 import Projects from "./screens/ProjectsScreen";
 import SignIn from "./screens/SignInScreen";
+import { colors } from "./components/colors";
+import HeaderMenuButton from "./components/Button/HeaderMenuButton";
+import ProjectName from "./screens/ProjectNameScreen";
+import Map from "./screens/MapScreen";
 
 const { primary, secondary } = colors;
 
@@ -29,6 +33,7 @@ export type RootStackParamList = {
   Projects: undefined;
   SignIn: undefined;
   ProjectName: undefined;
+  Map: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -69,6 +74,11 @@ export default function App() {
             <Stack.Screen
               name="Projects"
               component={Projects}
+              options={{ headerRight: () => <HeaderMenuButton /> }}
+            />
+            <Stack.Screen
+              name="Map"
+              component={Map}
               options={{ headerRight: () => <HeaderMenuButton /> }}
             />
           </Stack.Navigator>
