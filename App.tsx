@@ -10,9 +10,10 @@ import ProjectNavigation from "./screens/ProjectNavigationScreen";
 import Projects from "./screens/ProjectsScreen";
 import SignIn from "./screens/SignInScreen";
 
-import { colors } from "./components/colors"
+import { colors } from "./components/colors";
+import HeaderMenuButton from "./components/Button/HeaderMenuButton";
 
-const { primary, secondary, accent, black, gray } = colors;
+const { primary, secondary} = colors;
 
 declare global {
   namespace ReactNavigation {
@@ -36,12 +37,15 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <StatusBar style="auto" backgroundColor={primary}/>
+        <StatusBar style="auto" backgroundColor={primary} />
         <Stack.Navigator
           initialRouteName="Home"
-          screenOptions={({ route }) => ({ headerTitle: route.name, headerStyle:{
-              backgroundColor: secondary}
-            })}
+          screenOptions={({ route }) => ({
+            headerTitle: route.name,
+            headerStyle: {
+              backgroundColor: secondary,
+            },
+          })}
         >
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="LogIn" component={LogIn} />
@@ -49,10 +53,23 @@ export default function App() {
           <Stack.Screen
             name="ProjectNavigation"
             component={ProjectNavigation}
+            options={{ headerRight: () => <HeaderMenuButton /> }}
           />
-          <Stack.Screen name="NewProject" component={NewProjectScreen} />
-          <Stack.Screen name="Projects" component={Projects} />
-          <Stack.Screen name="CameraScreen" component={CameraScreen} />
+          <Stack.Screen
+            name="NewProject"
+            component={NewProjectScreen}
+            options={{ headerRight: () => <HeaderMenuButton /> }}
+          />
+          <Stack.Screen
+            name="Projects"
+            component={Projects}
+            options={{ headerRight: () => <HeaderMenuButton /> }}
+          />
+          <Stack.Screen
+            name="CameraScreen"
+            component={CameraScreen}
+            options={{ headerRight: () => <HeaderMenuButton /> }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
