@@ -5,12 +5,15 @@ import {
   FlatList,
   Image,
   SafeAreaView,
+  Dimensions,
 } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import GlobalButton from "../components/GlobalButton";
+import MapView from "react-native-maps";
+
 
 export default function NewProject() {
   const [images, setImages] = useState<string[]>([]);
@@ -68,6 +71,7 @@ export default function NewProject() {
           // keyExtractor={(item) => item.id}
         />
         <GlobalButton onPress={console.log} text={"+ Create Project"} />
+        <MapView style={styles.map} />
       </SafeAreaView>
 
       <Entypo
@@ -109,5 +113,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 10,
     bottom: 4,
+  },
+  map: {
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
 });
