@@ -12,6 +12,7 @@
 - TouchableOpacity
 - StyleSheet
 - SafeAreaProvider
+- TouchableOpacity
 
 ## Använda Expo-komponenter
 
