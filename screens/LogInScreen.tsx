@@ -18,7 +18,9 @@ export default function LogIn({ navigation }: Props) {
         email: "",
         password: "",
       }}
-      onSubmit={(values, formikActions) => navigation.navigate("ProjectName")}
+      onSubmit={(values, formikActions) =>
+        navigation.navigate("ProjectNavigation")
+      }
     >
       {({
         handleChange,
