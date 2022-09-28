@@ -24,5 +24,7 @@ const styles = StyleSheet.create({
     elevation: 6,
     shadowRadius: 15,
     shadowOffset: { width: 1, height: 5 },
+    width: 150,
+    alignItems: "center",
   },
 });
