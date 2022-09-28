@@ -1,3 +1,3 @@
 import { Project } from "./components/Models";
 
-export const projects: Project[] = [];
+export const tempProjectsStorage: Project[] = [];
