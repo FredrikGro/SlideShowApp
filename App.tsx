@@ -10,6 +10,10 @@ import ProjectNavigation from "./screens/ProjectNavigationScreen";
 import Projects from "./screens/ProjectsScreen";
 import SignIn from "./screens/SignInScreen";
 
+import { colors } from "./components/colors"
+
+const { primary, secondary, accent, black, gray } = colors;
+
 declare global {
   namespace ReactNavigation {
     interface RootParamList extends RootStackParamList {}
@@ -32,10 +36,12 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <StatusBar style="auto" />
+        <StatusBar style="auto" backgroundColor={primary}/>
         <Stack.Navigator
           initialRouteName="Home"
-          screenOptions={({ route }) => ({ headerTitle: route.name })}
+          screenOptions={({ route }) => ({ headerTitle: route.name, headerStyle:{
+              backgroundColor: secondary}
+            })}
         >
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="LogIn" component={LogIn} />
