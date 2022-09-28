@@ -17,7 +17,6 @@
 
 - ImagePicker
 - StatusBar
-- Camera
 - MaterialCommunityIcons
 
 
