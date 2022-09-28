@@ -2,18 +2,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import CameraScreen from "./screens/CameraScreen";
 import Home from "./screens/HomeScreen";
 import LogIn from "./screens/LogInScreen";
 import NewProject from "./screens/NewProjectScreen";
 import ProjectNavigation from "./screens/ProjectNavigationScreen";
 import Projects from "./screens/ProjectsScreen";
 import SignIn from "./screens/SignInScreen";
-
 import { colors } from "./components/colors";
 import HeaderMenuButton from "./components/Button/HeaderMenuButton";
 import ProjectName from "./screens/ProjectNameScreen";
-import NewProjectScreen from "./screens/NewProjectScreen";
 
 const { primary, secondary } = colors;
 
@@ -30,7 +27,6 @@ export type RootStackParamList = {
   ProjectNavigation: undefined;
   Projects: undefined;
   SignIn: undefined;
-  CameraScreen: undefined;
   ProjectName: undefined;
 };
 
@@ -73,7 +69,6 @@ export default function App() {
             component={Projects}
             options={{ headerRight: () => <HeaderMenuButton /> }}
           />
-          <Stack.Screen name="CameraScreen" component={CameraScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
