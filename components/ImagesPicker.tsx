@@ -55,7 +55,10 @@ export default function ImagesPicker() {
           )}
           // keyExtractor={(item) => item.id}
         />
-        <GlobalButton onPress={console.log} text={"+ Create Project"} />
+        <GlobalButton
+          onPress={() => console.log("Save and go to projectsScreen")}
+          text={"+ Create Project"}
+        />
       </SafeAreaView>
 
       <Entypo
