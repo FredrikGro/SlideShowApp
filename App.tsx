@@ -5,13 +5,15 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import CameraScreen from "./screens/CameraScreen";
 import Home from "./screens/HomeScreen";
 import LogIn from "./screens/LogInScreen";
-import NewProjectScreen from "./screens/NewProjectScreen";
+import NewProject from "./screens/NewProjectScreen";
 import ProjectNavigation from "./screens/ProjectNavigationScreen";
 import Projects from "./screens/ProjectsScreen";
 import SignIn from "./screens/SignInScreen";
 
 import { colors } from "./components/colors";
 import HeaderMenuButton from "./components/Button/HeaderMenuButton";
+import ProjectName from "./screens/ProjectNameScreen";
+import NewProjectScreen from "./screens/NewProjectScreen";
 
 const { primary, secondary} = colors;
 
@@ -29,6 +31,7 @@ export type RootStackParamList = {
   Projects: undefined;
   SignIn: undefined;
   CameraScreen: undefined;
+  ProjectName: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -70,6 +73,10 @@ export default function App() {
             component={CameraScreen}
             options={{ headerRight: () => <HeaderMenuButton /> }}
           />
+          <Stack.Screen name="NewProject" component={NewProject} options={{ headerRight: () => <HeaderMenuButton /> }}/>
+          <Stack.Screen name="ProjectName" component={ProjectName} options={{ headerRight: () => <HeaderMenuButton /> }}/>
+          <Stack.Screen name="Projects" component={Projects} options={{ headerRight: () => <HeaderMenuButton /> }}/>
+          <Stack.Screen name="CameraScreen" component={CameraScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
