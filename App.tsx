@@ -24,7 +24,7 @@ declare global {
 export type RootStackParamList = {
   Home: undefined;
   LogIn: undefined;
-  NewProject: undefined;
+  NewProject: { projectName: string };
   ProjectNavigation: undefined;
   Projects: undefined;
   SignIn: undefined;
