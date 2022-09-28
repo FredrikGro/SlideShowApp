@@ -15,7 +15,7 @@ import HeaderMenuButton from "./components/Button/HeaderMenuButton";
 import ProjectName from "./screens/ProjectNameScreen";
 import NewProjectScreen from "./screens/NewProjectScreen";
 
-const { primary, secondary} = colors;
+const { primary, secondary } = colors;
 
 declare global {
   namespace ReactNavigation {
@@ -60,7 +60,12 @@ export default function App() {
           />
           <Stack.Screen
             name="NewProject"
-            component={NewProjectScreen}
+            component={NewProject}
+            options={{ headerRight: () => <HeaderMenuButton /> }}
+          />
+          <Stack.Screen
+            name="ProjectName"
+            component={ProjectName}
             options={{ headerRight: () => <HeaderMenuButton /> }}
           />
           <Stack.Screen
@@ -68,14 +73,6 @@ export default function App() {
             component={Projects}
             options={{ headerRight: () => <HeaderMenuButton /> }}
           />
-          <Stack.Screen
-            name="CameraScreen"
-            component={CameraScreen}
-            options={{ headerRight: () => <HeaderMenuButton /> }}
-          />
-          <Stack.Screen name="NewProject" component={NewProject} options={{ headerRight: () => <HeaderMenuButton /> }}/>
-          <Stack.Screen name="ProjectName" component={ProjectName} options={{ headerRight: () => <HeaderMenuButton /> }}/>
-          <Stack.Screen name="Projects" component={Projects} options={{ headerRight: () => <HeaderMenuButton /> }}/>
           <Stack.Screen name="CameraScreen" component={CameraScreen} />
         </Stack.Navigator>
       </NavigationContainer>
