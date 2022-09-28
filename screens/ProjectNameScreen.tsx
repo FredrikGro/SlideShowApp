@@ -1,9 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { ReactNode, useState } from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import GlobalButton from "../components/GlobalButton";
 
 export default function ProjectName() {
   const [projectName, setProjectName] = useState("");
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -14,7 +16,10 @@ export default function ProjectName() {
         onChangeText={(val) => setProjectName(val)}
         style={styles.input}
       />
-      <GlobalButton onPress={() => console.log("Pressed")} text="Submit" />
+      <GlobalButton
+        onPress={() => navigation.navigate("NewProject", { projectName })}
+        text="Submit"
+      />
     </View>
   );
 }

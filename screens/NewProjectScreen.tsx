@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import ImagesPicker from "../components/ImagesPicker";
+import { useRoute } from "@react-navigation/native";
 
 export default function NewProject() {
+  const route = useRoute();
+  const { projectName } = route.params as { projectName: string };
   return (
     <View style={styles.container}>
-      <Text>New Project</Text>
+      <Text style={{ fontSize: 30 }}>{projectName}</Text>
       <ImagesPicker />
     </View>
   );
