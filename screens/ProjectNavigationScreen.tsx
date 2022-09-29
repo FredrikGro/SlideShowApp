@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
-import GlobalButton from "../components/GlobalButton";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { View } from "react-native";
 import { RootStackParamList } from "../App";
+import GlobalButton from "../components/GlobalButton";
 import { styles } from "../styles";
 
-type Props = NativeStackScreenProps<RootStackParamList, "Home">;
+type Props = NativeStackScreenProps<RootStackParamList, "ProjectNavigation">;
 
 export default function ProjectNavigation({ navigation }: Props) {
   return (
