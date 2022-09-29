@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { Project } from "../components/Models";
 import { tempProjectsStorage } from "../data";
 
@@ -19,6 +19,7 @@ export default function ProjectProvider({ children }: Props) {
   const [projects, setProjects] = useState<Project[]>(tempProjectsStorage); // TODO: Add Storage for loading/saving
 
   // TODO: useEffect for saving projects to Storage
+  useEffect(() => {}, [projects]);
 
   function addToProjects(project: Project) {
     setProjects((prev) => [...prev, project]);
