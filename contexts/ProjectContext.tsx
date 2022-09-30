@@ -47,6 +47,37 @@ export default function ProjectProvider({ children }: Props) {
     }
   }, [projects]);
 
+  useEffect(() => {
+    if (!isFirstRender && email != "") {
+      console.log(
+        "Inside useEffects IF-statement, meaning it is not first render, and email is != empty string"
+      ); // TODO: Remove console.log before launch
+
+      settingProjectsAfterEmailUpdate();
+    } else {
+      console.log(
+        "Inside useEffects ELSE-statement, meaning it is first render"
+      ); // TODO: Remove console.log before launch
+
+      setIsFirstRender(false);
+    }
+  }, [email]);
+
+  async function settingProjectsAfterEmailUpdate() {
+    console.log("Inside settingProjectsAfterEmailUpdate"); // TODO: Remove console.log before launch
+    let result = await SecureStore.getItemAsync(email);
+
+    if (result != null) {
+      console.log("Inside if statement where result != null"); // TODO: Remove console.log before launch
+      let parsed: Project[] = JSON.parse(result);
+      console.log("result has been parsed " + parsed);
+      setProjects(parsed);
+    } else {
+      console.log("Inside else statement where result = null"); // TODO: Remove console.log before launch
+      setProjects([]);
+    }
+  }
+
   async function getProjects(userEmail: string) {
     let result = await SecureStore.getItemAsync(userEmail);
 
