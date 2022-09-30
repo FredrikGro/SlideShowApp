@@ -1,7 +1,6 @@
 import * as SecureStore from "expo-secure-store";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { Project } from "../components/Models";
-import { tempProjectsStorage } from "../data";
 
 interface ContextValue {
   projects: Project[];
@@ -18,7 +17,7 @@ interface Props {
 }
 
 export default function ProjectProvider({ children }: Props) {
-  const [projects, setProjects] = useState<Project[]>(tempProjectsStorage); // TODO: Add Storage for loading/saving
+  const [projects, setProjects] = useState<Project[]>([]);
   const [email, setEmail] = useState<string>("");
   const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
 
