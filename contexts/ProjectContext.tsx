@@ -21,7 +21,6 @@ export default function ProjectProvider({ children }: Props) {
   const [email, setEmail] = useState<string>("");
   const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
 
-  // TODO: useEffect for saving projects to Storage
   useEffect(() => {
     if (!isFirstRender) {
       console.log(
