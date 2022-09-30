@@ -26,11 +26,11 @@ declare global {
 export type RootStackParamList = {
   Home: undefined;
   LogIn: undefined;
-  NewProject: { projectName: string };
-  ProjectNavigation: undefined;
+  NewProject: { projectName: string; email: string };
+  ProjectNavigation: { email: string };
   Projects: undefined;
   SignIn: undefined;
-  ProjectName: undefined;
+  ProjectName: { email: string };
   Map: undefined;
   SlideShow: undefined;
 };

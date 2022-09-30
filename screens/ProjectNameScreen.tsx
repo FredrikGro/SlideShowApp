@@ -2,8 +2,11 @@ import { useNavigation } from "@react-navigation/native";
 import React, { ReactNode, useState } from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import GlobalButton from "../components/GlobalButton";
+import { useRoute } from "@react-navigation/native";
 
 export default function ProjectName() {
+  const route = useRoute();
+  const { email } = route.params as { email: string };
   const [projectName, setProjectName] = useState("");
   const navigation = useNavigation();
 
@@ -17,7 +20,9 @@ export default function ProjectName() {
         style={styles.input}
       />
       <GlobalButton
-        onPress={() => navigation.navigate("NewProject", { projectName })}
+        onPress={() =>
+          navigation.navigate("NewProject", { projectName, email })
+        }
         text="Submit"
       />
     </View>

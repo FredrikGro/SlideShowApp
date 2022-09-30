@@ -12,12 +12,14 @@ import { Entypo, AntDesign } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import GlobalButton from "../components/GlobalButton";
 
-
 export default function NewProject() {
   const [images, setImages] = useState<string[]>([]);
 
   const route = useRoute();
-  const { projectName } = route.params as { projectName: string };
+  const { projectName, email } = route.params as {
+    projectName: string;
+    email: string;
+  };
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -57,6 +59,8 @@ export default function NewProject() {
         }}
       >
         <Text style={{ fontSize: 24 }}>{projectName}</Text>
+        {/* TEST ... ta bort koden nedan sen */}
+        <Text style={{ fontSize: 24 }}>{email}</Text>
         <FlatList
           data={images}
           style={{ paddingTop: 10 }}

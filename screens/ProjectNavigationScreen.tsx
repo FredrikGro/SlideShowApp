@@ -3,16 +3,19 @@ import GlobalButton from "../components/GlobalButton";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../App";
 import { styles } from "../styles";
+import { useRoute } from "@react-navigation/native";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
 export default function ProjectNavigation({ navigation }: Props) {
+  const route = useRoute();
+  const { email } = route.params as { email: string };
   return (
     <View style={styles.container}>
       <View style={styles.mb40}>
         <GlobalButton
           text=" + New Project"
-          onPress={() => navigation.navigate("ProjectName")}
+          onPress={() => navigation.navigate("ProjectName", { email })}
         />
       </View>
       <View style={styles.mb40}></View>
@@ -23,16 +26,3 @@ export default function ProjectNavigation({ navigation }: Props) {
     </View>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   container2: {
-//     flex: 1,
-//     padding: 5,
-//   },
-// });
