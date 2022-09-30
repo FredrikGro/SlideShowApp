@@ -8,6 +8,7 @@ interface ContextValue {
   addToProjects: (project: Project) => void;
   removeFromProjects: (project: Project) => void;
   editProject: (project: Project) => void;
+  setEmail: (email: string) => void;
 }
 
 const ProjectContext = createContext<ContextValue>({} as ContextValue);
@@ -96,6 +97,7 @@ export default function ProjectProvider({ children }: Props) {
         addToProjects,
         removeFromProjects,
         editProject,
+        setEmail,
       }}
     >
       {children}
