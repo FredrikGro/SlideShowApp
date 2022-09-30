@@ -19,6 +19,7 @@ interface Props {
 
 export default function ProjectProvider({ children }: Props) {
   const [projects, setProjects] = useState<Project[]>(tempProjectsStorage); // TODO: Add Storage for loading/saving
+  const [email, setEmail] = useState<string>("");
 
   // TODO: useEffect for saving projects to Storage
   useEffect(() => {}, [projects]);
