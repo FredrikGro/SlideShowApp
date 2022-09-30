@@ -5,7 +5,6 @@ import { tempProjectsStorage } from "../data";
 
 interface ContextValue {
   projects: Project[];
-  // getProjects: (userEmail: string) => Promise<Project[]>;
   addToProjects: (project: Project) => void;
   removeFromProjects: (project: Project) => void;
   editProject: (project: Project) => void;
@@ -78,14 +77,6 @@ export default function ProjectProvider({ children }: Props) {
     }
   }
 
-  async function getProjects(userEmail: string) {
-    let result = await SecureStore.getItemAsync(userEmail);
-
-    if (result) {
-      const array = JSON.parse(result);
-    }
-  }
-
   function addToProjects(project: Project) {
     setProjects((prev) => [...prev, project]);
   }
@@ -102,7 +93,6 @@ export default function ProjectProvider({ children }: Props) {
     <ProjectContext.Provider
       value={{
         projects,
-        // getProjects,
         addToProjects,
         removeFromProjects,
         editProject,
