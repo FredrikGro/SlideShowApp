@@ -23,7 +23,29 @@ export default function ProjectProvider({ children }: Props) {
   const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
 
   // TODO: useEffect for saving projects to Storage
-  useEffect(() => {}, [projects]);
+  useEffect(() => {
+    if (!isFirstRender) {
+      console.log(
+        "Inside useEffects IF-statement, meaning it is not first render"
+      ); // TODO: Remove console.log before launch
+
+      if (projects.length > 0) {
+        console.log(
+          "Inside if statement, meaning projects.length > 0, adding to store content for email " +
+            email
+        ); // TODO: Remove console.log before launch
+
+        let jsonString = JSON.stringify(projects);
+        SecureStore.setItemAsync(email, jsonString);
+      } else {
+        console.log(
+          "Inside else statement, meaning projects.length <= 0, deleting store content for email " +
+            email
+        ); // TODO: Remove console.log before launch
+        SecureStore.deleteItemAsync(email);
+      }
+    }
+  }, [projects]);
 
   async function getProjects(userEmail: string) {
     let result = await SecureStore.getItemAsync(userEmail);
