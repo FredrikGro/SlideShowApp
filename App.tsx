@@ -14,6 +14,7 @@ import HeaderMenuButton from "./components/Button/HeaderMenuButton";
 import ProjectName from "./screens/ProjectNameScreen";
 import Map from "./screens/MapScreen";
 import SlideShow from "./screens/SlideShowScreen";
+import DrawerNavigator from "./Navigation/Drawer/DrawerNagivator";
 
 const { primary, secondary } = colors;
 
@@ -25,14 +26,15 @@ declare global {
 
 export type RootStackParamList = {
   Home: undefined;
+  HomeDrawer: undefined;
   LogIn: undefined;
-  NewProject: { projectName: string };
-  ProjectNavigation: undefined;
-  Projects: undefined;
+  //NewProject: { projectName: string };
+  //ProjectNavigation: undefined;
+  //Projects: undefined;
   SignIn: undefined;
-  ProjectName: undefined;
-  Map: undefined;
-  SlideShow: undefined;
+  //ProjectName: undefined;
+  //Map: undefined;
+  //SlideShow: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -55,36 +57,37 @@ export default function App() {
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="LogIn" component={LogIn} />
             <Stack.Screen name="SignIn" component={SignIn} />
-            <Stack.Screen
+            <Stack.Screen name="HomeDrawer" component={DrawerNavigator} options={{headerShown: false}} />
+            {/* <Stack.Screen
               name="ProjectNavigation"
               component={ProjectNavigation}
-              options={{ headerRight: () => <HeaderMenuButton /> }}
+              //options={{ headerRight: () => <HeaderMenuButton /> }}
             />
             <Stack.Screen
               name="NewProject"
               component={NewProject}
-              options={{ headerRight: () => <HeaderMenuButton /> }}
+              //options={{ headerRight: () => <HeaderMenuButton /> }}
             />
             <Stack.Screen
               name="ProjectName"
               component={ProjectName}
-              options={{ headerRight: () => <HeaderMenuButton /> }}
+              //options={{ headerRight: () => <HeaderMenuButton /> }}
             />
             <Stack.Screen
               name="Projects"
               component={Projects}
-              options={{ headerRight: () => <HeaderMenuButton /> }}
+              //options={{ headerRight: () => <HeaderMenuButton /> }}
             />
             <Stack.Screen
               name="Map"
               component={Map}
-              options={{ headerRight: () => <HeaderMenuButton /> }}
+              //options={{ headerRight: () => <HeaderMenuButton /> }}
             />
             <Stack.Screen
               name="SlideShow"
               component={SlideShow}
-              options={{ headerRight: () => <HeaderMenuButton /> }}
-            />
+              //options={{ headerRight: () => <HeaderMenuButton /> }}
+            /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </ProjectProvider>

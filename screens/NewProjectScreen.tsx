@@ -56,7 +56,7 @@ export default function NewProject() {
           marginBottom: 40,
         }}
       >
-        <Text style={{ fontSize: 24 }}>{projectName}</Text>
+        <Text style={{ fontSize: 24 }}>{ projectName }</Text>
         <FlatList
           data={images}
           style={{ paddingTop: 10 }}
