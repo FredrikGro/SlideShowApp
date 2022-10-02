@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import GlobalButton from "../components/GlobalButton";
+import BigText from "../components/Texts/BigText";
 
 export default function NewProject() {
   const [images, setImages] = useState<string[]>([]);
@@ -58,9 +59,7 @@ export default function NewProject() {
           marginBottom: 40,
         }}
       >
-        <Text style={{ fontSize: 24 }}>{projectName}</Text>
-        {/* TEST ... ta bort koden nedan sen */}
-        <Text style={{ fontSize: 24 }}>{email}</Text>
+        <BigText>{projectName}</BigText>
         <FlatList
           data={images}
           style={{ paddingTop: 10 }}
