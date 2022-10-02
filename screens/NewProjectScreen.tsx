@@ -64,10 +64,7 @@ export default function NewProject() {
           data={images}
           style={{ paddingTop: 10 }}
           renderItem={({ item }) => (
-            <Image
-              source={{ uri: item }}
-              style={{ width: 200, height: 200, margin: 10 }}
-            />
+            <Image source={{ uri: item }} style={styles.images} />
           )}
           // keyExtractor={(item) => item.id}
         />
@@ -102,16 +99,21 @@ const styles = StyleSheet.create({
   },
   icon_left: {
     flexDirection: "row",
-    backgroundColor: "#fff",
+    backgroundColor: "#f5f5f5",
     position: "absolute",
     left: 10,
     bottom: 4,
   },
   icon_right: {
     flexDirection: "row",
-    backgroundColor: "#fff",
+    backgroundColor: "#f5f5f5",
     position: "absolute",
     right: 10,
     bottom: 4,
+  },
+  images: {
+    width: 100,
+    height: 100,
+    padding: 10,
   },
 });
