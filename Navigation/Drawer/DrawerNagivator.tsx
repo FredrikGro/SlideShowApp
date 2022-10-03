@@ -1,14 +1,19 @@
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
+import { MaterialIcons } from "@expo/vector-icons";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItem,
+  DrawerItemList,
+} from "@react-navigation/drawer";
 import * as React from "react";
-import LogIn from "../../screens/LogInScreen";
 import NewProject from "../../screens/NewProjectScreen";
 import ProjectNavigation from "../../screens/ProjectNavigationScreen";
-import { MaterialIcons } from "@expo/vector-icons";
 
 import { colors } from "../../components/colors";
+import Home from "../../screens/HomeScreen";
 import ProjectName from "../../screens/ProjectNameScreen";
 import Projects from "../../screens/ProjectsScreen";
-import Home from "../../screens/HomeScreen";
+import SlideShow from "../../screens/SlideShowScreen";
 const { primary, secondary } = colors;
 
 export type DrawerParamList = {
@@ -37,10 +42,10 @@ export default function DrawerNavigator() {
           state: {
             ...props.state,
             routeNames: props.state.routeNames.filter((routeName) => {
-              routeName !== "NewProject";
+              routeName !== "NewProject" && "SlideShow";
             }),
             routes: props.state.routes.filter(
-              (route) => route.name !== "NewProject"
+              (route) => route.name !== "NewProject" && "SlideShow"
             ),
           },
         };
@@ -103,6 +108,16 @@ export default function DrawerNavigator() {
         component={NewProject}
         options={{
           title: "My new project",
+          drawerIcon: () => {
+            return <MaterialIcons name="folder" size={24} color="black" />;
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="SlideShow"
+        component={SlideShow}
+        options={{
+          title: "SlideShow for my project",
           drawerIcon: () => {
             return <MaterialIcons name="folder" size={24} color="black" />;
           },
