@@ -1,21 +1,18 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  Image,
-  SafeAreaView,
-} from "react-native";
+import { AntDesign, Entypo } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
-import React, { useState } from "react";
-import { Entypo, AntDesign } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
-import GlobalButton from "../components/GlobalButton";
-import BigText from "../components/Texts/BigText";
+import React, { useState } from "react";
+import { FlatList, Image, SafeAreaView, StyleSheet, View } from "react-native";
 import "react-native-get-random-values";
+import GlobalButton from "../components/GlobalButton";
+import { Project } from "../components/Models";
+import BigText from "../components/Texts/BigText";
+import { customAlphabet } from "nanoid/non-secure";
 
 export default function NewProject() {
   const [images, setImages] = useState<string[]>([]);
+
+  const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
 
   const route = useRoute();
   const { projectName } = route.params as {
@@ -68,7 +65,17 @@ export default function NewProject() {
           )}
           // keyExtractor={(item) => item.id}
         />
-        <GlobalButton onPress={console.log} text={"+ Create Project"} />
+        <GlobalButton
+          text={"+ Create Project"}
+          onPress={() => {
+            let newProject: Project = {
+              id: nanoid(),
+              userEmail: "",
+              projectName: projectName,
+              imagesURI: images,
+            };
+          }}
+        />
       </SafeAreaView>
 
       <Entypo
