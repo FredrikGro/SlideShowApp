@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { useProject } from "../contexts/ProjectContext";
 import { styles } from "../styles";
+import RegularButton from "./Button/RegularButton";
 import RegularText from "./Texts/RegularText";
 
 export default function ProjectView() {
@@ -18,6 +19,13 @@ export default function ProjectView() {
   ) : (
     <View style={styles.container}>
       <RegularText children={"Your projects to be shown here"} />
+      {projects.map((project) => (
+        <View key={project.id}>
+          <RegularButton onPress={() => ({})}>
+            <RegularText children={project.projectName} />
+          </RegularButton>
+        </View>
+      ))}
     </View>
   );
 }
