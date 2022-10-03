@@ -6,10 +6,20 @@ import { styles } from "../styles";
 import GlobalButton from "../components/GlobalButton";
 import * as Device from "expo-device";
 import SmallText from "../components/Texts/SmallText";
+import { Audio } from "expo-av";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
 export default function Home({ navigation }: Props) {
+  async function playSound() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("../assets/Jingle.mp3")
+    );
+
+    await sound.playAsync();
+  }
+  playSound();
+
   return (
     <View style={styles.container}>
       <View style={{ position: "absolute", top: 20 }}>
