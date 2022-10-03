@@ -24,6 +24,8 @@ export default function ProjectView({ navigation }: Props) {
       />
     </View>
   ) : (
-    <View></View>
+    <View>
+      <RegularText children={"Your projects to be shown here"} />
+    </View>
   );
 }
