@@ -13,6 +13,7 @@ interface ContextValue {
   addToProjects: (project: Project) => void;
   removeFromProjects: (project: Project) => void;
   editProject: (project: Project) => void;
+  email: string;
   setEmailAsKey: (email: string) => void;
 }
 
@@ -105,6 +106,7 @@ export default function ProjectProvider({ children }: Props) {
         addToProjects,
         removeFromProjects,
         editProject,
+        email,
         setEmailAsKey,
       }}
     >
