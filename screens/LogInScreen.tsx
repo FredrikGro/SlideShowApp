@@ -1,10 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Formik } from "formik";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Formik } from "formik";
+import { StyleSheet, View } from "react-native";
 import { RootStackParamList } from "../App";
-
-import StylesTextInput from "../components/Input/StylesTextInput";
 import RegularButton from "../components/Button/RegularButton";
+import StylesTextInput from "../components/Input/StylesTextInput";
 import { LogInValidationSchema } from "../components/LogInValidationSchema";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
