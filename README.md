@@ -19,6 +19,7 @@
 - StatusBar
 - MaterialCommunityIcons
 - SecureStore
+- Device
 
 
 ## Övriga använda komponenter
