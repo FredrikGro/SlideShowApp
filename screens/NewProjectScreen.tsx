@@ -1,24 +1,30 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  Image,
-  SafeAreaView,
-} from "react-native";
+import { AntDesign, Entypo } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
-import React, { useState } from "react";
-import { Entypo, AntDesign } from "@expo/vector-icons";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import * as ImagePicker from "expo-image-picker";
+import { customAlphabet } from "nanoid/non-secure";
+import React, { useState } from "react";
+import { FlatList, Image, SafeAreaView, StyleSheet, View } from "react-native";
+import "react-native-get-random-values";
 import GlobalButton from "../components/GlobalButton";
+import { Project } from "../components/Models";
 import BigText from "../components/Texts/BigText";
+import { useProject } from "../contexts/ProjectContext";
+import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
-export default function NewProject() {
+type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
+
+export default function NewProject({ navigation }: Props) {
   const [images, setImages] = useState<string[]>([]);
 
+  const { addToProjects, email } = useProject();
+
+  const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
+
   const route = useRoute();
-  const { projectName} = route.params as {
-    projectName: string;    
+
+  const { projectName } = route.params as {
+    projectName: string;
   };
 
   const pickImage = async () => {
@@ -67,7 +73,21 @@ export default function NewProject() {
           )}
           // keyExtractor={(item) => item.id}
         />
-        <GlobalButton onPress={console.log} text={"+ Create Project"} />
+        <GlobalButton
+          text={"+ Create Project"}
+          onPress={() => {
+            let newProject: Project = {
+              id: nanoid(),
+              userEmail: email,
+              projectName: projectName,
+              imagesURI: images,
+            };
+
+            addToProjects(newProject);
+
+            navigation.navigate("Projects");
+          }}
+        />
       </SafeAreaView>
 
       <Entypo
