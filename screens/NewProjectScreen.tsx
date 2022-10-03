@@ -1,5 +1,6 @@
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import * as ImagePicker from "expo-image-picker";
 import { customAlphabet } from "nanoid/non-secure";
 import React, { useState } from "react";
@@ -9,8 +10,11 @@ import GlobalButton from "../components/GlobalButton";
 import { Project } from "../components/Models";
 import BigText from "../components/Texts/BigText";
 import { useProject } from "../contexts/ProjectContext";
+import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
-export default function NewProject() {
+type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
+
+export default function NewProject({ navigation }: Props) {
   const [images, setImages] = useState<string[]>([]);
 
   const { addToProjects, email } = useProject();
@@ -18,6 +22,7 @@ export default function NewProject() {
   const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
 
   const route = useRoute();
+
   const { projectName } = route.params as {
     projectName: string;
   };
@@ -79,6 +84,8 @@ export default function NewProject() {
             };
 
             addToProjects(newProject);
+
+            navigation.navigate("Projects");
           }}
         />
       </SafeAreaView>
