@@ -1,5 +1,11 @@
 import * as SecureStore from "expo-secure-store";
-import { createContext, ReactNode, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Project } from "../components/Models";
 
 interface ContextValue {
@@ -102,3 +108,5 @@ export default function ProjectProvider({ children }: Props) {
     </ProjectContext.Provider>
   );
 }
+
+export const useProject = () => useContext(ProjectContext);
