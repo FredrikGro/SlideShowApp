@@ -17,9 +17,8 @@ export default function NewProject() {
   const [images, setImages] = useState<string[]>([]);
 
   const route = useRoute();
-  const { projectName, email } = route.params as {
-    projectName: string;
-    email: string;
+  const { projectName} = route.params as {
+    projectName: string;    
   };
 
   const pickImage = async () => {
