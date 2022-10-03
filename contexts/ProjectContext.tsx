@@ -82,7 +82,9 @@ export default function ProjectProvider({ children }: Props) {
     }
   }
 
-  function setEmailAsKey(email: string) {}
+  function setEmailAsKey(email: string) {
+    setEmail(email.replace("@", "_"));
+  }
 
   function addToProjects(project: Project) {
     setProjects((prev) => [...prev, project]);
