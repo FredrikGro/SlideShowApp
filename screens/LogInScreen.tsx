@@ -19,7 +19,10 @@ export default function LogIn({ navigation }: Props) {
         email: "",
         password: "",
       }}
-      onSubmit={(values, formikActions) => navigation.navigate("HomeDrawer")}
+      onSubmit={(values, formikActions) => {
+        setEmailAsKey(values.email);
+        navigation.navigate("HomeDrawer");
+      }}
     >
       {({
         handleChange,
