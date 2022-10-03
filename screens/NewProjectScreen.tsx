@@ -85,6 +85,8 @@ export default function NewProject({ navigation }: Props) {
 
             addToProjects(newProject);
 
+            setImages([]);
+
             navigation.navigate("Projects");
           }}
         />
