@@ -18,6 +18,7 @@
 - ImagePicker
 - StatusBar
 - MaterialCommunityIcons
+- SecureStore
 
 
 ## Övriga använda komponenter
