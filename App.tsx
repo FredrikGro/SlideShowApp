@@ -57,7 +57,11 @@ export default function App() {
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="LogIn" component={LogIn} />
             <Stack.Screen name="SignIn" component={SignIn} />
-            <Stack.Screen name="HomeDrawer" component={DrawerNavigator} options={{headerShown: false}} />
+            <Stack.Screen
+              name="HomeDrawer"
+              component={DrawerNavigator}
+              options={{ headerShown: false }}
+            />
             {/* <Stack.Screen
               name="ProjectNavigation"
               component={ProjectNavigation}

@@ -11,13 +11,15 @@ import React, { useState } from "react";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import GlobalButton from "../components/GlobalButton";
-
+import BigText from "../components/Texts/BigText";
 
 export default function NewProject() {
   const [images, setImages] = useState<string[]>([]);
 
   const route = useRoute();
-  const { projectName } = route.params as { projectName: string };
+  const { projectName} = route.params as {
+    projectName: string;    
+  };
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -56,15 +58,12 @@ export default function NewProject() {
           marginBottom: 40,
         }}
       >
-        <Text style={{ fontSize: 24 }}>{ projectName }</Text>
+        <BigText>{projectName}</BigText>
         <FlatList
           data={images}
           style={{ paddingTop: 10 }}
           renderItem={({ item }) => (
-            <Image
-              source={{ uri: item }}
-              style={{ width: 200, height: 200, margin: 10 }}
-            />
+            <Image source={{ uri: item }} style={styles.images} />
           )}
           // keyExtractor={(item) => item.id}
         />
@@ -99,16 +98,21 @@ const styles = StyleSheet.create({
   },
   icon_left: {
     flexDirection: "row",
-    backgroundColor: "#fff",
+    backgroundColor: "#f5f5f5",
     position: "absolute",
     left: 10,
     bottom: 4,
   },
   icon_right: {
     flexDirection: "row",
-    backgroundColor: "#fff",
+    backgroundColor: "#f5f5f5",
     position: "absolute",
     right: 10,
     bottom: 4,
+  },
+  images: {
+    width: 100,
+    height: 100,
+    padding: 10,
   },
 });

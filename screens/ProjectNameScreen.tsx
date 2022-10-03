@@ -4,6 +4,7 @@ import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 import React, { ReactNode, useEffect, useState } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import GlobalButton from "../components/GlobalButton";
+import { useRoute } from "@react-navigation/native";
 
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
 
@@ -21,7 +22,9 @@ export default function ProjectName({ navigation }: Props) {
         style={styles.input}
       />
       <GlobalButton
-        onPress={() => navigation.navigate("NewProject", { projectName })}
+        onPress={() =>
+          navigation.navigate("NewProject", { projectName})
+        }
         text="Submit"
       />
     </View>

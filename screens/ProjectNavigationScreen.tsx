@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 import GlobalButton from "../components/GlobalButton";
 import { styles } from "../styles";
+import { useRoute } from "@react-navigation/native";
 
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectNavigation">;
 
@@ -23,16 +24,3 @@ export default function ProjectNavigation({ navigation }: Props) {
     </View>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   container2: {
-//     flex: 1,
-//     padding: 5,
-//   },
-// });
