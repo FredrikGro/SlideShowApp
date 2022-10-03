@@ -16,4 +16,7 @@ export const styles = StyleSheet.create({
   mb40: {
     marginBottom: 40,
   },
+  pt40: {
+    paddingTop: 40,
+  },
 });
