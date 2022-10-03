@@ -13,7 +13,7 @@ interface ContextValue {
   addToProjects: (project: Project) => void;
   removeFromProjects: (project: Project) => void;
   editProject: (project: Project) => void;
-  setEmail: (email: string) => void;
+  setEmailAsKey: (email: string) => void;
 }
 
 const ProjectContext = createContext<ContextValue>({} as ContextValue);
@@ -82,6 +82,10 @@ export default function ProjectProvider({ children }: Props) {
     }
   }
 
+  function setEmailAsKey(email: string) {
+    setEmail(email.replace("@", "_"));
+  }
+
   function addToProjects(project: Project) {
     setProjects((prev) => [...prev, project]);
   }
@@ -101,7 +105,7 @@ export default function ProjectProvider({ children }: Props) {
         addToProjects,
         removeFromProjects,
         editProject,
-        setEmail,
+        setEmailAsKey,
       }}
     >
       {children}

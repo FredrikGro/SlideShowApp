@@ -1,18 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import ProjectView from "../components/ProjectView";
+import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
-export default function Projects() {
-  return (
-    <View style={styles.container}>
-      <Text>Projects</Text>
-    </View>
-  );
+type Props = NativeStackScreenProps<DrawerParamList, "Projects">;
+
+export default function Projects({ navigation, route }: Props) {
+  return <ProjectView navigation={navigation} route={route} />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

@@ -1,24 +1,21 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useRef } from "react";
 import {
+  Animated,
+  ImageBackground,
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  View,
-  ImageBackground,
-  Animated,
   useWindowDimensions,
+  View,
 } from "react-native";
+import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
-//TODO: Replace with picked images
-const images = [
-  "https://picsum.photos/200/300?random=1",
-  "https://picsum.photos/200/300?random=2",
-  "https://picsum.photos/200/300?random=3",
-  "https://picsum.photos/200/300?random=4",
-];
+type Props = NativeStackScreenProps<DrawerParamList, "SlideShow">;
 
-export default function SlideShow() {
+export default function SlideShow({ route }: Props) {
   const scrollX = useRef(new Animated.Value(0)).current;
+  const { project } = route.params;
 
   const { width: windowWidth } = useWindowDimensions();
 
@@ -43,7 +40,7 @@ export default function SlideShow() {
           )}
           scrollEventThrottle={1}
         >
-          {images.map((image, imageIndex) => {
+          {project.imagesURI.map((image, imageIndex) => {
             return (
               <View
                 style={{ width: windowWidth, height: 250 }}
@@ -58,7 +55,7 @@ export default function SlideShow() {
           })}
         </ScrollView>
         <View style={styles.indicatorContainer}>
-          {images.map((image, imageIndex) => {
+          {project.imagesURI.map((image, imageIndex) => {
             const width = scrollX.interpolate({
               inputRange: [
                 windowWidth * (imageIndex - 1),

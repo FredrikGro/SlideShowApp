@@ -1,14 +1,19 @@
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
-import * as React from "react";
-import LogIn from "../../screens/LogInScreen";
-import NewProject from "../../screens/NewProjectScreen";
-import ProjectNavigation from "../../screens/ProjectNavigationScreen";
 import { MaterialIcons } from "@expo/vector-icons";
-
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItem,
+  DrawerItemList,
+} from "@react-navigation/drawer";
+import * as React from "react";
 import { colors } from "../../components/colors";
+import { Project } from "../../components/Models";
+import NewProject from "../../screens/NewProjectScreen";
 import ProjectName from "../../screens/ProjectNameScreen";
+import ProjectNavigation from "../../screens/ProjectNavigationScreen";
 import Projects from "../../screens/ProjectsScreen";
-import Home from "../../screens/HomeScreen";
+import SlideShow from "../../screens/SlideShowScreen";
+
 const { primary } = colors;
 
 export type DrawerParamList = {
@@ -19,7 +24,7 @@ export type DrawerParamList = {
   ProjectNavigation: undefined;
   Projects: undefined;
   ProjectName: undefined;
-  SlideShow: undefined;
+  SlideShow: { project: Project };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -35,9 +40,9 @@ export default function DrawerNavigator() {
           ...props,
           state: {
             ...props.state,
-            routeNames: props.state.routeNames.filter((routeName) => {
-              routeName !== "NewProject";
-            }),
+            routeNames: props.state.routeNames.filter(
+              (routeName) => routeName !== "NewProject"
+            ),
             routes: props.state.routes.filter(
               (route) => route.name !== "NewProject"
             ),
@@ -47,7 +52,9 @@ export default function DrawerNavigator() {
           <DrawerContentScrollView {...filteredProps}>
             <DrawerItemList {...filteredProps} />
             <DrawerItem
-              icon={() => <MaterialIcons name="logout" size={24} color="black" />}
+              icon={() => (
+                <MaterialIcons name="logout" size={24} color="black" />
+              )}
               label="Logout"
               onPress={() => props.navigation.navigate("Home")}
             />
@@ -106,7 +113,18 @@ export default function DrawerNavigator() {
           },
         }}
       />
-{/*       <Drawer.Screen
+      <Drawer.Screen
+        name="SlideShow"
+        component={SlideShow}
+        options={{
+          title: "SlideShow for my project",
+          drawerIcon: () => {
+            return <MaterialIcons name="folder" size={24} color="black" />;
+          },
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      {/*<Drawer.Screen
         name="Home"
         component={Home}
         options={{
