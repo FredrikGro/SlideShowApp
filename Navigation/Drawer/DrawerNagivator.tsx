@@ -8,7 +8,6 @@ import {
 import * as React from "react";
 import NewProject from "../../screens/NewProjectScreen";
 import ProjectNavigation from "../../screens/ProjectNavigationScreen";
-
 import { colors } from "../../components/colors";
 import { Project } from "../../components/Models";
 import Home from "../../screens/HomeScreen";
@@ -16,11 +15,10 @@ import ProjectName from "../../screens/ProjectNameScreen";
 import Projects from "../../screens/ProjectsScreen";
 import SlideShow from "../../screens/SlideShowScreen";
 
-const { primary, secondary } = colors;
+const { primary } = colors;
 
 export type DrawerParamList = {
   HomeDrawer: undefined;
-  Home: undefined;
   Logout: undefined;
   Map: undefined;
   NewProject: { projectName: string };
@@ -55,10 +53,11 @@ export default function DrawerNavigator() {
           <DrawerContentScrollView {...filteredProps}>
             <DrawerItemList {...filteredProps} />
             <DrawerItem
+              icon={() => (
+                <MaterialIcons name="logout" size={24} color="black" />
+              )}
               label="Logout"
-              onPress={() =>
-                props.navigation.navigate("App", { screen: "Home" })
-              }
+              onPress={() => props.navigation.navigate("Home")}
             />
           </DrawerContentScrollView>
         );
@@ -73,7 +72,7 @@ export default function DrawerNavigator() {
             return <MaterialIcons name="alt-route" size={24} color="black" />;
           },
           headerStyle: {
-            backgroundColor: "primary",
+            backgroundColor: primary,
           },
         }}
       />
@@ -88,7 +87,7 @@ export default function DrawerNavigator() {
             );
           },
           headerStyle: {
-            backgroundColor: "primary",
+            backgroundColor: primary,
           },
         }}
       />
@@ -101,7 +100,7 @@ export default function DrawerNavigator() {
             return <MaterialIcons name="folder" size={24} color="black" />;
           },
           headerStyle: {
-            backgroundColor: "primary",
+            backgroundColor: primary,
           },
         }}
       />
@@ -126,7 +125,7 @@ export default function DrawerNavigator() {
           drawerItemStyle: { display: "none" },
         }}
       />
-      <Drawer.Screen
+      {/*<Drawer.Screen
         name="Home"
         component={Home}
         options={{
@@ -135,7 +134,7 @@ export default function DrawerNavigator() {
             return <MaterialIcons name="logout" size={24} color="black" />;
           },
         }}
-      />
+      /> */}
     </Drawer.Navigator>
   );
 }
