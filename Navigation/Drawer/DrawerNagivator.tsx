@@ -10,10 +10,12 @@ import NewProject from "../../screens/NewProjectScreen";
 import ProjectNavigation from "../../screens/ProjectNavigationScreen";
 
 import { colors } from "../../components/colors";
+import { Project } from "../../components/Models";
 import Home from "../../screens/HomeScreen";
 import ProjectName from "../../screens/ProjectNameScreen";
 import Projects from "../../screens/ProjectsScreen";
 import SlideShow from "../../screens/SlideShowScreen";
+
 const { primary, secondary } = colors;
 
 export type DrawerParamList = {
@@ -25,7 +27,7 @@ export type DrawerParamList = {
   ProjectNavigation: undefined;
   Projects: undefined;
   ProjectName: undefined;
-  SlideShow: undefined;
+  SlideShow: { project: Project };
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();

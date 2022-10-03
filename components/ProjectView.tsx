@@ -1,4 +1,4 @@
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { View } from "react-native";
 import { useProject } from "../contexts/ProjectContext";
@@ -8,11 +8,9 @@ import RegularButton from "./Button/RegularButton";
 import { Project } from "./Models";
 import RegularText from "./Texts/RegularText";
 
-interface Props {
-  navigation: NativeStackNavigationProp<DrawerParamList, "Projects", undefined>;
-}
+type Props = NativeStackScreenProps<DrawerParamList, "Projects">;
 
-export default function ProjectView({ navigation }: Props) {
+export default function ProjectView({ navigation, route }: Props) {
   const { projects, addToProjects, setEmailAsKey } = useProject(); // Remove addToProjects & setEmail before launching
 
   return projects.length <= 0 ? (
@@ -51,7 +49,9 @@ export default function ProjectView({ navigation }: Props) {
       <RegularText children={"Your projects to be shown here"} />
       {projects.map((project) => (
         <View key={project.id} style={styles.mb40}>
-          <RegularButton onPress={() => navigation.navigate("SlideShow")}>
+          <RegularButton
+            onPress={() => navigation.navigate("SlideShow", { project })}
+          >
             <RegularText children={project.projectName} />
           </RegularButton>
         </View>
