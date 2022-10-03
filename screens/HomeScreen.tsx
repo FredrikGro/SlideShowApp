@@ -1,12 +1,13 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
-import { Button, View } from "react-native";
+import { Button, View, Image } from "react-native";
 import { RootStackParamList } from "../App";
 import { styles } from "../styles";
 import GlobalButton from "../components/GlobalButton";
 import * as Device from "expo-device";
-import SmallText from "../components/Texts/SmallText";
 import { Audio } from "expo-av";
+import RegularText from "../components/Texts/RegularText";
+import BigText from "../components/Texts/BigText";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
@@ -22,9 +23,18 @@ export default function Home({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require("../assets/psycadelic.gif")}
+        style={{ height: 700, width: 700, position: "absolute", bottom: -55 }}
+      />
       <View style={{ position: "absolute", top: 20 }}>
-        <SmallText>{Device.deviceName}</SmallText>
+        <RegularText style={{ color: "white" }}>
+          {Device.deviceName}
+        </RegularText>
       </View>
+      <BigText style={{ color: "white", position: "absolute", top: 40 }}>
+        Slideshow Composer
+      </BigText>
       <View style={styles.mb40}>
         <GlobalButton
           text="Log In"
