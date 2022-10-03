@@ -6,12 +6,11 @@ import {
   DrawerItemList,
 } from "@react-navigation/drawer";
 import * as React from "react";
-import NewProject from "../../screens/NewProjectScreen";
-import ProjectNavigation from "../../screens/ProjectNavigationScreen";
 import { colors } from "../../components/colors";
 import { Project } from "../../components/Models";
-import Home from "../../screens/HomeScreen";
+import NewProject from "../../screens/NewProjectScreen";
 import ProjectName from "../../screens/ProjectNameScreen";
+import ProjectNavigation from "../../screens/ProjectNavigationScreen";
 import Projects from "../../screens/ProjectsScreen";
 import SlideShow from "../../screens/SlideShowScreen";
 
