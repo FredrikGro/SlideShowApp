@@ -21,7 +21,11 @@ export default function SignIn({ navigation }: Props) {
         password: "",
         confirmPassword: "",
       }}
-      onSubmit={(values, formikActions) => console.log(values)}
+      onSubmit={(values, formikActions) => {
+        console.log(values);
+        setEmailAsKey(values.email);
+        navigation.navigate("HomeDrawer");
+      }}
     >
       {({
         handleChange,
