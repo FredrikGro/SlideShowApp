@@ -10,7 +10,7 @@ import RegularText from "./Texts/RegularText";
 
 type Props = NativeStackScreenProps<DrawerParamList, "Projects">;
 
-export default function ProjectView({ navigation, route }: Props) {
+export default function ProjectView({ navigation }: Props) {
   const { projects, addToProjects, setEmailAsKey } = useProject(); // Remove addToProjects & setEmail before launching
 
   return projects.length <= 0 ? (
