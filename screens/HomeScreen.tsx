@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
-import { Button, View } from "react-native";
+import { Button, View, Image } from "react-native";
 import { RootStackParamList } from "../App";
 import { styles } from "../styles";
 import GlobalButton from "../components/GlobalButton";
@@ -22,6 +22,10 @@ export default function Home({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
+      <Image
+        source={require("../assets/psycadelic.gif")}
+        style={{ height: 700, width: 700, position: "absolute", bottom: -55 }}
+      />
       <View style={{ position: "absolute", top: 20 }}>
         <SmallText>{Device.deviceName}</SmallText>
       </View>
