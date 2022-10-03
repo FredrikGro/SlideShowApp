@@ -11,17 +11,9 @@ import {
 } from "react-native";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
-//TODO: Replace with picked images
-const images = [
-  "https://picsum.photos/200/300?random=1",
-  "https://picsum.photos/200/300?random=2",
-  "https://picsum.photos/200/300?random=3",
-  "https://picsum.photos/200/300?random=4",
-];
-
 type Props = NativeStackScreenProps<DrawerParamList, "SlideShow">;
 
-export default function SlideShow({ route, navigation }: Props) {
+export default function SlideShow({ route }: Props) {
   const scrollX = useRef(new Animated.Value(0)).current;
   const { project } = route.params;
 
