@@ -5,10 +5,13 @@ import { RootStackParamList } from "../App";
 import RegularButton from "../components/Button/RegularButton";
 import StylesTextInput from "../components/Input/StylesTextInput";
 import { SignInValidationSchema } from "../components/SignInValidationSchema";
+import { useProject } from "../contexts/ProjectContext";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 export default function SignIn({ navigation }: Props) {
+  const { setEmailAsKey } = useProject();
+
   return (
     <Formik
       validationSchema={SignInValidationSchema}
