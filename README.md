@@ -33,7 +33,7 @@
 
 Krav för godkänt:
 
-- [ ] Projektet använder minst 6 stycken RN-komponenter och minst 6 stycken Expo komponenter.
+- [X] Projektet använder minst 6 stycken RN-komponenter och minst 6 stycken Expo komponenter.
 - [X] De utvalda komponenterna ska antecknas i er README tillsammans med en lista över genomförda krav.
 - [x] Git & GitHub har använts
 - [x] Projektmappen innehåller en README.md fil - (läs ovan för mer info)
