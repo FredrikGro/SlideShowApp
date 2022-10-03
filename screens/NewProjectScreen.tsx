@@ -1,16 +1,19 @@
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
+import { customAlphabet } from "nanoid/non-secure";
 import React, { useState } from "react";
 import { FlatList, Image, SafeAreaView, StyleSheet, View } from "react-native";
 import "react-native-get-random-values";
 import GlobalButton from "../components/GlobalButton";
 import { Project } from "../components/Models";
 import BigText from "../components/Texts/BigText";
-import { customAlphabet } from "nanoid/non-secure";
+import { useProject } from "../contexts/ProjectContext";
 
 export default function NewProject() {
   const [images, setImages] = useState<string[]>([]);
+
+  const { addToProjects, email } = useProject();
 
   const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
 
@@ -70,10 +73,12 @@ export default function NewProject() {
           onPress={() => {
             let newProject: Project = {
               id: nanoid(),
-              userEmail: "",
+              userEmail: email,
               projectName: projectName,
               imagesURI: images,
             };
+
+            addToProjects(newProject);
           }}
         />
       </SafeAreaView>
