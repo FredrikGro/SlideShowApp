@@ -46,7 +46,10 @@ export default function ProjectView({ navigation }: Props) {
     </View>
   ) : (
     <View style={[styles.containerTop, styles.pt40]}>
-      <RegularText children={"Your projects to be shown here"} />
+      <RegularText
+        style={styles.mb40}
+        children={"Your projects are shown here"}
+      />
       {projects.map((project) => (
         <View key={project.id} style={styles.mb40}>
           <RegularButton
