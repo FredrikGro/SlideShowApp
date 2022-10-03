@@ -20,6 +20,7 @@
 - MaterialCommunityIcons
 - SecureStore
 - Device
+- AV
 
 
 ## Övriga använda komponenter
