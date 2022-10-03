@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
-import GlobalButton from "../components/GlobalButton";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../App";
+import { View } from "react-native";
+import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
+import GlobalButton from "../components/GlobalButton";
 import { styles } from "../styles";
 import { useRoute } from "@react-navigation/native";
 
-type Props = NativeStackScreenProps<RootStackParamList, "Home">;
+type Props = NativeStackScreenProps<DrawerParamList, "ProjectNavigation">;
 
 export default function ProjectNavigation({ navigation }: Props) {
   const route = useRoute();

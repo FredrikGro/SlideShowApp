@@ -1,14 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { ReactNode, useState } from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
+import React, { ReactNode, useEffect, useState } from "react";
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import GlobalButton from "../components/GlobalButton";
 import { useRoute } from "@react-navigation/native";
 
-export default function ProjectName() {
-  const route = useRoute();
-  const { email } = route.params as { email: string };
+type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
+
+export default function ProjectName({ navigation }: Props) {
   const [projectName, setProjectName] = useState("");
-  const navigation = useNavigation();
+  //const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
