@@ -17,7 +17,7 @@ export default function ProjectView() {
       />
     </View>
   ) : (
-    <View style={styles.containerTop}>
+    <View style={[styles.containerTop, styles.pt40]}>
       <RegularText children={"Your projects to be shown here"} />
       {projects.map((project) => (
         <View key={project.id}>
