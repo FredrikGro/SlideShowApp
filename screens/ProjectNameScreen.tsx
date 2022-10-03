@@ -23,7 +23,7 @@ export default function ProjectName({ navigation }: Props) {
       />
       <GlobalButton
         onPress={() =>
-          navigation.navigate("NewProject", { projectName, email })
+          navigation.navigate("NewProject", { projectName})
         }
         text="Submit"
       />
