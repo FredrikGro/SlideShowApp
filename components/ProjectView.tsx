@@ -10,15 +10,17 @@ export default function ProjectView() {
   const { projects, addToProjects, setEmailAsKey } = useProject(); // Remove addToProjects & setEmail before launching
 
   return projects.length <= 0 ? (
-    <View style={styles.container}>
+    <View style={[styles.containerTop, styles.pt40]}>
       <RegularText
+        style={styles.mb40}
         children={
-          "You don't have any projects, head to New Project if you wish to create a new one!"
+          "You don't have any projects,\nhead to New Project if you wish to create a new one!"
         }
       />
       <RegularButton
         children={"Set email to 'test@email.com'"}
         onPress={() => setEmailAsKey("test@email.com")}
+        style={styles.mb40}
       />
       <RegularButton
         children={"Add a new project temporary"}
@@ -42,7 +44,7 @@ export default function ProjectView() {
     <View style={[styles.containerTop, styles.pt40]}>
       <RegularText children={"Your projects to be shown here"} />
       {projects.map((project) => (
-        <View key={project.id}>
+        <View key={project.id} style={styles.mb40}>
           <RegularButton onPress={() => {}}>
             <RegularText children={project.projectName} />
           </RegularButton>
