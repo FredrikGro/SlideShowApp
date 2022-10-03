@@ -40,12 +40,12 @@ export default function DrawerNavigator() {
           ...props,
           state: {
             ...props.state,
-            routeNames: props.state.routeNames.filter(
-              (routeName) => routeName !== "NewProject"
-            ),
-            routes: props.state.routes.filter(
-              (route) => route.name !== "NewProject"
-            ),
+            // routeNames: props.state.routeNames.filter(
+            //   (routeName) => routeName !== "NewProject"
+            // ),
+            // routes: props.state.routes.filter(
+            //   (route) => route.name !== "NewProject"
+            // ),
           },
         };
         return (
@@ -111,6 +111,7 @@ export default function DrawerNavigator() {
           drawerIcon: () => {
             return <MaterialIcons name="folder" size={24} color="black" />;
           },
+          drawerItemStyle: { display: "none" },
         }}
       />
       <Drawer.Screen
