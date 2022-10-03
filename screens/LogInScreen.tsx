@@ -1,15 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Formik } from "formik";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Formik } from "formik";
+import { StyleSheet, View } from "react-native";
 import { RootStackParamList } from "../App";
-
-import StylesTextInput from "../components/Input/StylesTextInput";
 import RegularButton from "../components/Button/RegularButton";
+import StylesTextInput from "../components/Input/StylesTextInput";
 import { LogInValidationSchema } from "../components/LogInValidationSchema";
+import { useProject } from "../contexts/ProjectContext";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 export default function LogIn({ navigation }: Props) {
+  const { setEmailAsKey } = useProject();
+
   return (
     <Formik
       validationSchema={LogInValidationSchema}
@@ -17,7 +19,10 @@ export default function LogIn({ navigation }: Props) {
         email: "",
         password: "",
       }}
-      onSubmit={(values, formikActions) => navigation.navigate("HomeDrawer")}
+      onSubmit={(values, formikActions) => {
+        setEmailAsKey(values.email);
+        navigation.navigate("HomeDrawer");
+      }}
     >
       {({
         handleChange,

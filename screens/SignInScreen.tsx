@@ -1,11 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Formik } from "formik";
-
-import StylesTextInput from "../components/Input/StylesTextInput";
+import { StyleSheet, View } from "react-native";
+import { RootStackParamList } from "../App";
 import RegularButton from "../components/Button/RegularButton";
-import {SignInValidationSchema} from "../components/SignInValidationSchema";
+import StylesTextInput from "../components/Input/StylesTextInput";
+import { SignInValidationSchema } from "../components/SignInValidationSchema";
+import { useProject } from "../contexts/ProjectContext";
 
-export default function SignIn() {
+type Props = NativeStackScreenProps<RootStackParamList>;
+
+export default function SignIn({ navigation }: Props) {
+  const { setEmailAsKey } = useProject();
 
   return (
     <Formik
@@ -16,10 +21,21 @@ export default function SignIn() {
         password: "",
         confirmPassword: "",
       }}
-      onSubmit={(values, formikActions) => console.log(values)}
+      onSubmit={(values, formikActions) => {
+        console.log(values);
+        setEmailAsKey(values.email);
+        navigation.navigate("HomeDrawer");
+      }}
     >
-      {({ handleChange, handleBlur, touched, handleSubmit, values, errors }) => {
-        const {email, fullName, password, confirmPassword} = values
+      {({
+        handleChange,
+        handleBlur,
+        touched,
+        handleSubmit,
+        values,
+        errors,
+      }) => {
+        const { email, fullName, password, confirmPassword } = values;
         return (
           <View style={styles.container}>
             <StylesTextInput
@@ -65,13 +81,10 @@ export default function SignIn() {
               isPassword={true}
               style={{ marginBottom: 20 }}
             />
-            <RegularButton
-              onPress={handleSubmit}
-            >
-              Sign In
-            </RegularButton>
+            <RegularButton onPress={handleSubmit}>Sign In</RegularButton>
           </View>
-        );}}
+        );
+      }}
     </Formik>
   );
 }
