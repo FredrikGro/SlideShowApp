@@ -7,7 +7,7 @@ import { Project } from "./Models";
 import RegularText from "./Texts/RegularText";
 
 export default function ProjectView() {
-  const { projects, addToProjects, setEmail } = useProject(); // Remove addToProjects & setEmail before launching
+  const { projects, addToProjects, setEmailAsKey } = useProject(); // Remove addToProjects & setEmail before launching
 
   return projects.length <= 0 ? (
     <View style={styles.container}>
@@ -18,7 +18,7 @@ export default function ProjectView() {
       />
       <RegularButton
         children={"Set email to 'test@email.com'"}
-        onPress={() => setEmail("test@email.com")}
+        onPress={() => setEmailAsKey("test@email.com")}
       />
       <RegularButton
         children={"Add a new project temporary"}
