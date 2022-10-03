@@ -8,14 +8,12 @@ import { useRoute } from "@react-navigation/native";
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectNavigation">;
 
 export default function ProjectNavigation({ navigation }: Props) {
-  const route = useRoute();
-  const { email } = route.params as { email: string };
   return (
     <View style={styles.container}>
       <View style={styles.mb40}>
         <GlobalButton
           text=" + New Project"
-          onPress={() => navigation.navigate("ProjectName", { email })}
+          onPress={() => navigation.navigate("ProjectName")}
         />
       </View>
       <View style={styles.mb40}></View>
