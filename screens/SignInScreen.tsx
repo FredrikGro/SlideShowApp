@@ -1,12 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
 import { Formik } from "formik";
-
-import StylesTextInput from "../components/Input/StylesTextInput";
+import { StyleSheet, View } from "react-native";
 import RegularButton from "../components/Button/RegularButton";
-import {SignInValidationSchema} from "../components/SignInValidationSchema";
+import StylesTextInput from "../components/Input/StylesTextInput";
+import { SignInValidationSchema } from "../components/SignInValidationSchema";
 
 export default function SignIn() {
-
   return (
     <Formik
       validationSchema={SignInValidationSchema}
@@ -18,8 +16,15 @@ export default function SignIn() {
       }}
       onSubmit={(values, formikActions) => console.log(values)}
     >
-      {({ handleChange, handleBlur, touched, handleSubmit, values, errors }) => {
-        const {email, fullName, password, confirmPassword} = values
+      {({
+        handleChange,
+        handleBlur,
+        touched,
+        handleSubmit,
+        values,
+        errors,
+      }) => {
+        const { email, fullName, password, confirmPassword } = values;
         return (
           <View style={styles.container}>
             <StylesTextInput
@@ -65,13 +70,10 @@ export default function SignIn() {
               isPassword={true}
               style={{ marginBottom: 20 }}
             />
-            <RegularButton
-              onPress={handleSubmit}
-            >
-              Sign In
-            </RegularButton>
+            <RegularButton onPress={handleSubmit}>Sign In</RegularButton>
           </View>
-        );}}
+        );
+      }}
     </Formik>
   );
 }
