@@ -1,10 +1,14 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Formik } from "formik";
 import { StyleSheet, View } from "react-native";
+import { RootStackParamList } from "../App";
 import RegularButton from "../components/Button/RegularButton";
 import StylesTextInput from "../components/Input/StylesTextInput";
 import { SignInValidationSchema } from "../components/SignInValidationSchema";
 
-export default function SignIn() {
+type Props = NativeStackScreenProps<RootStackParamList>;
+
+export default function SignIn({ navigation }: Props) {
   return (
     <Formik
       validationSchema={SignInValidationSchema}
