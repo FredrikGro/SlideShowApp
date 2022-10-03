@@ -12,13 +12,14 @@ import { Entypo, AntDesign } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import GlobalButton from "../components/GlobalButton";
 import BigText from "../components/Texts/BigText";
+import "react-native-get-random-values";
 
 export default function NewProject() {
   const [images, setImages] = useState<string[]>([]);
 
   const route = useRoute();
-  const { projectName} = route.params as {
-    projectName: string;    
+  const { projectName } = route.params as {
+    projectName: string;
   };
 
   const pickImage = async () => {
