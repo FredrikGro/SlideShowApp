@@ -5,6 +5,7 @@ import { useProject } from "../contexts/ProjectContext";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 import { styles } from "../styles";
 import RegularButton from "./Button/RegularButton";
+import SmallButton from "./Button/SmallButton";
 import RegularText from "./Texts/RegularText";
 
 type Props = NativeStackScreenProps<DrawerParamList, "Projects">;
@@ -38,6 +39,11 @@ export default function ProjectView({ navigation }: Props) {
           >
             <RegularText children={project.projectName} />
           </RegularButton>
+          <SmallButton
+            children={"A"}
+            onPress={undefined}
+            style={{ width: 30 }}
+          />
         </View>
       ))}
     </View>
