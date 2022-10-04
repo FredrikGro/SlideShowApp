@@ -1,3 +1,4 @@
+import { MaterialIcons } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { View } from "react-native";
@@ -40,9 +41,9 @@ export default function ProjectView({ navigation }: Props) {
             <RegularText children={project.projectName} />
           </RegularButton>
           <SmallButton
-            children={"A"}
+            children={<MaterialIcons name="delete" size={24} color="black" />}
             onPress={() => removeFromProjects(project)}
-            style={{ width: 30, backgroundColor: "#BB2222" }}
+            style={{ width: 30, backgroundColor: "#DD2222" }}
           />
         </View>
       ))}
