@@ -12,6 +12,13 @@ export default function ProjectName({ navigation }: Props) {
   const [projectName, setProjectName] = useState("");
   //const navigation = useNavigation();
 
+  useEffect(() => {
+    const focusHandler = navigation.addListener("focus", () => {
+      setProjectName("");
+    });
+    return focusHandler;
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
       <Text>Add Project Name</Text>
@@ -22,9 +29,7 @@ export default function ProjectName({ navigation }: Props) {
         style={styles.input}
       />
       <GlobalButton
-        onPress={() =>
-          navigation.navigate("NewProject", { projectName})
-        }
+        onPress={() => navigation.navigate("NewProject", { projectName })}
         text="Submit"
       />
     </View>
