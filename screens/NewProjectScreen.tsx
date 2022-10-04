@@ -12,7 +12,7 @@ import BigText from "../components/Texts/BigText";
 import { useProject } from "../contexts/ProjectContext";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
-type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
+type Props = NativeStackScreenProps<DrawerParamList, "NewProject">;
 
 export default function NewProject({ navigation }: Props) {
   const [images, setImages] = useState<string[]>([]);
