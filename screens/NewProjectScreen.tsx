@@ -14,22 +14,20 @@ import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
 type Props = NativeStackScreenProps<DrawerParamList, "NewProject">;
 
-export default function NewProject({ navigation }: Props, project?: Project) {
-  const [images, setImages] = useState<string[]>([]);
+export default function NewProject({ navigation }: Props) {
+  const route = useRoute();
+  const { projectName, project } = route.params as {
+    projectName: string;
+    project?: Project;
+  };
+
+  const [images, setImages] = useState<string[]>(
+    project ? project.imagesURI : []
+  );
 
   const { addToProjects, email } = useProject();
 
   const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
-
-  const route = useRoute();
-
-  const { projectName } = route.params as {
-    projectName: string;
-  };
-
-  // if (project) {
-  //   setImages(project.imagesURI);
-  // }
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
