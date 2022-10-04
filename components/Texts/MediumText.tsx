@@ -11,8 +11,8 @@ const StyledText = styled.Text`
   text-align: left;
 `;
 
-const BigText: FunctionComponent<TextProps> = (props) => {
+const MediumText: FunctionComponent<TextProps> = (props) => {
   return <StyledText style={props.style}>{props.children}</StyledText>;
 };
 
-export default BigText;
+export default MediumText;
