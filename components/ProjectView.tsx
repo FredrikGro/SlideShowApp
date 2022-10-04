@@ -37,19 +37,22 @@ export default function ProjectView({ navigation }: Props) {
         <View key={project.id} style={[styles.mb40, styles.fdRow]}>
           <RegularButton
             onPress={() => navigation.navigate("SlideShow", { project })}
+            style={{ height: 80 }}
           >
             <RegularText children={project.projectName} />
           </RegularButton>
-          <SmallButton
-            children={<MaterialIcons name="delete" size={24} color="black" />}
-            onPress={() => removeFromProjects(project)}
-            style={{ width: 30, backgroundColor: "#DD2222" }}
-          />
-          <SmallButton
-            children={<MaterialIcons name="edit" size={24} color="black" />}
-            onPress={undefined}
-            style={{ width: 30, backgroundColor: "#4477FF" }}
-          />
+          <View>
+            <SmallButton
+              children={<MaterialIcons name="delete" size={20} color="black" />}
+              onPress={() => removeFromProjects(project)}
+              style={{ width: 30, backgroundColor: "#DD2222" }}
+            />
+            <SmallButton
+              children={<MaterialIcons name="edit" size={20} color="black" />}
+              onPress={undefined}
+              style={{ width: 30, backgroundColor: "#4477FF" }}
+            />
+          </View>
         </View>
       ))}
     </View>
