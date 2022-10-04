@@ -32,11 +32,7 @@ export default function ProjectName({ navigation }: Props, project?: Project) {
         style={styles.input}
       />
       <GlobalButton
-        onPress={
-          project
-            ? () => navigation.navigate("NewProject", { projectName, project })
-            : () => navigation.navigate("NewProject", { projectName })
-        }
+        onPress={() => navigation.navigate("NewProject", { projectName })}
         text="Submit"
       />
     </View>
