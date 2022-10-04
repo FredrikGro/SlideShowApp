@@ -55,6 +55,10 @@ export default function ProjectView({ navigation }: Props) {
                 position: "absolute",
                 right: 0,
                 top: 40,
+                borderBottomRightRadius: 15,
+                borderBottomLeftRadius: 0,
+                borderTopLeftRadius: 0,
+                borderTopRightRadius: 0,
               }}
             />
             <SmallButton
@@ -65,6 +69,10 @@ export default function ProjectView({ navigation }: Props) {
                 backgroundColor: "#4477FF",
                 position: "absolute",
                 right: 0,
+                borderBottomRightRadius: 0,
+                borderBottomLeftRadius: 0,
+                borderTopLeftRadius: 0,
+                borderTopRightRadius: 15,
               }}
             />
           </View>
