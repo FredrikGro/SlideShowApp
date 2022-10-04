@@ -42,7 +42,7 @@ export default function ProjectView({ navigation }: Props) {
           <SmallButton
             children={"A"}
             onPress={undefined}
-            style={{ width: 30 }}
+            style={{ width: 30, backgroundColor: "#BB2222" }}
           />
         </View>
       ))}
