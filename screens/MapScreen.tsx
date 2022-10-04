@@ -21,7 +21,6 @@ export default function Map() {
           marginBottom: 40,
         }}
       >
-        <Text style={{ fontSize: 24 }}>Map</Text>
         <MapView
           style={styles.map}
           provider={PROVIDER_GOOGLE}
@@ -41,26 +40,6 @@ export default function Map() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  icon_left: {
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    position: "absolute",
-    left: 10,
-    bottom: 4,
-  },
-  icon_right: {
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    position: "absolute",
-    right: 10,
-    bottom: 4,
-  },
   map: {
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
