@@ -18,15 +18,11 @@ export default function ProjectName({ navigation }: Props, project?: Project) {
     }, [])
   );
 
-  if (project) {
-    setProjectName(project.projectName);
-  }
-
   return (
     <View style={styles.container}>
       <Text>Add Project Name</Text>
       <TextInput
-        value={projectName}
+        value={project ? project.projectName : projectName}
         placeholder="Project Name..."
         onChangeText={(val) => setProjectName(val)}
         style={styles.input}
