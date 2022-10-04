@@ -8,11 +8,13 @@ import {
 import * as React from "react";
 import { colors } from "../../components/colors";
 import { Project } from "../../components/Models";
+import LogIn from "../../screens/LogInScreen";
 import NewProject from "../../screens/NewProjectScreen";
 import ProjectName from "../../screens/ProjectNameScreen";
 import ProjectNavigation from "../../screens/ProjectNavigationScreen";
 import Projects from "../../screens/ProjectsScreen";
 import SlideShow from "../../screens/SlideShowScreen";
+import MyProfile from "../../screens/MyProfileScreen";
 
 const { primary } = colors;
 
@@ -25,6 +27,7 @@ export type DrawerParamList = {
   Projects: undefined;
   ProjectName: undefined;
   SlideShow: { project: Project };
+  MyProfile: undefined;
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -125,16 +128,19 @@ export default function DrawerNavigator() {
           drawerItemStyle: { display: "none" },
         }}
       />
-      {/*<Drawer.Screen
-        name="Home"
-        component={Home}
+      <Drawer.Screen
+        name="MyProfile"
+        component={MyProfile}
         options={{
-          title: "Log out",
+          title: "My profile",
           drawerIcon: () => {
-            return <MaterialIcons name="logout" size={24} color="black" />;
+            return <MaterialIcons name="account-box" size={24} color="black" />;
+          },
+          headerStyle: {
+            backgroundColor: primary,
           },
         }}
-      /> */}
+      />
     </Drawer.Navigator>
   );
 }
