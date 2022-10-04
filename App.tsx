@@ -15,6 +15,10 @@ import ProjectName from "./screens/ProjectNameScreen";
 import Map from "./screens/MapScreen";
 import SlideShow from "./screens/SlideShowScreen";
 import DrawerNavigator from "./Navigation/Drawer/DrawerNagivator";
+import React from "react";
+import { Pressable } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import Info from "./screens/InfoScreen";
 
 const { primary, secondary } = colors;
 
@@ -33,8 +37,9 @@ export type RootStackParamList = {
   //Projects: undefined;
   SignIn: undefined;
   //ProjectName: undefined;
-  //Map: undefined;
+  Map: undefined;
   //SlideShow: undefined;
+  Info: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -54,13 +59,33 @@ export default function App() {
               },
             })}
           >
-            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={({ navigation }) => ({
+                headerRight: () => (
+                  <Pressable onPress={() => navigation.navigate("Info")}>
+                    <MaterialIcons
+                      name="info-outline"
+                      size={24}
+                      color="black"
+                    />
+                  </Pressable>
+                ),
+              })}
+            />
             <Stack.Screen name="LogIn" component={LogIn} />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen
               name="HomeDrawer"
               component={DrawerNavigator}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen name="Info" component={Info} />
+            <Stack.Screen
+              name="Map"
+              component={Map}
+              //options={{ headerRight: () => <HeaderMenuButton /> }}
             />
             {/* <Stack.Screen
               name="ProjectNavigation"
