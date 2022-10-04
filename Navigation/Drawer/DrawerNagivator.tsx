@@ -8,7 +8,6 @@ import {
 import * as React from "react";
 import { colors } from "../../components/colors";
 import { Project } from "../../components/Models";
-import LogIn from "../../screens/LogInScreen";
 import NewProject from "../../screens/NewProjectScreen";
 import ProjectName from "../../screens/ProjectNameScreen";
 import ProjectNavigation from "../../screens/ProjectNavigationScreen";
@@ -43,12 +42,6 @@ export default function DrawerNavigator() {
           ...props,
           state: {
             ...props.state,
-            // routeNames: props.state.routeNames.filter(
-            //   (routeName) => routeName !== "NewProject"
-            // ),
-            // routes: props.state.routes.filter(
-            //   (route) => route.name !== "NewProject"
-            // ),
           },
         };
         return (

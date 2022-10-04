@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { View } from "react-native";
 import GlobalButton from "../components/GlobalButton";
 import BigText from "../components/Texts/BigText";
 import MediumText from "../components/Texts/MediumText";

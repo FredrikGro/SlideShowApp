@@ -3,7 +3,6 @@ import { View } from "react-native";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 import GlobalButton from "../components/GlobalButton";
 import { styles } from "../styles";
-import { useRoute } from "@react-navigation/native";
 
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectNavigation">;
 
