@@ -1,14 +1,13 @@
 import { useFocusEffect } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useCallback, useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import GlobalButton from "../components/GlobalButton";
-import { Project } from "../components/Models";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
+import React, { ReactNode, useCallback, useState } from "react";
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import GlobalButton from "../components/GlobalButton";
 
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
 
-export default function ProjectName({ navigation }: Props, project?: Project) {
+export default function ProjectName({ navigation }: Props) {
   const [projectName, setProjectName] = useState("");
 
   useFocusEffect(
@@ -17,10 +16,6 @@ export default function ProjectName({ navigation }: Props, project?: Project) {
       return () => unsubscribe;
     }, [])
   );
-
-  if (project) {
-    setProjectName(project.projectName);
-  }
 
   return (
     <View style={styles.container}>
