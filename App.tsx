@@ -5,15 +5,9 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import ProjectProvider from "./contexts/ProjectContext";
 import Home from "./screens/HomeScreen";
 import LogIn from "./screens/LogInScreen";
-import NewProject from "./screens/NewProjectScreen";
-import ProjectNavigation from "./screens/ProjectNavigationScreen";
-import Projects from "./screens/ProjectsScreen";
 import SignIn from "./screens/SignInScreen";
 import { colors } from "./components/colors";
-import HeaderMenuButton from "./components/Button/HeaderMenuButton";
-import ProjectName from "./screens/ProjectNameScreen";
 import Map from "./screens/MapScreen";
-import SlideShow from "./screens/SlideShowScreen";
 import DrawerNavigator from "./Navigation/Drawer/DrawerNagivator";
 import React from "react";
 import { Pressable } from "react-native";
@@ -32,13 +26,8 @@ export type RootStackParamList = {
   Home: undefined;
   HomeDrawer: undefined;
   LogIn: undefined;
-  //NewProject: { projectName: string };
-  //ProjectNavigation: undefined;
-  //Projects: undefined;
   SignIn: undefined;
-  //ProjectName: undefined;
   Map: undefined;
-  //SlideShow: undefined;
   Info: undefined;
 };
 
@@ -85,38 +74,7 @@ export default function App() {
             <Stack.Screen
               name="Map"
               component={Map}
-              //options={{ headerRight: () => <HeaderMenuButton /> }}
             />
-            {/* <Stack.Screen
-              name="ProjectNavigation"
-              component={ProjectNavigation}
-              //options={{ headerRight: () => <HeaderMenuButton /> }}
-            />
-            <Stack.Screen
-              name="NewProject"
-              component={NewProject}
-              //options={{ headerRight: () => <HeaderMenuButton /> }}
-            />
-            <Stack.Screen
-              name="ProjectName"
-              component={ProjectName}
-              //options={{ headerRight: () => <HeaderMenuButton /> }}
-            />
-            <Stack.Screen
-              name="Projects"
-              component={Projects}
-              //options={{ headerRight: () => <HeaderMenuButton /> }}
-            />
-            <Stack.Screen
-              name="Map"
-              component={Map}
-              //options={{ headerRight: () => <HeaderMenuButton /> }}
-            />
-            <Stack.Screen
-              name="SlideShow"
-              component={SlideShow}
-              //options={{ headerRight: () => <HeaderMenuButton /> }}
-            /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </ProjectProvider>
