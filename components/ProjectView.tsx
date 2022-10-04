@@ -7,6 +7,7 @@ import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 import { styles } from "../styles";
 import RegularButton from "./Button/RegularButton";
 import SmallButton from "./Button/SmallButton";
+import BigText from "./Texts/BigText";
 import RegularText from "./Texts/RegularText";
 
 type Props = NativeStackScreenProps<DrawerParamList, "Projects">;
@@ -39,7 +40,7 @@ export default function ProjectView({ navigation }: Props) {
             onPress={() => navigation.navigate("SlideShow", { project })}
             style={{ height: 80 }}
           >
-            <RegularText children={project.projectName} />
+            <BigText children={project.projectName} />
           </RegularButton>
           <View>
             <SmallButton
