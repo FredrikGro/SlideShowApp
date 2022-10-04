@@ -63,10 +63,7 @@ export default function ProjectView({ navigation }: Props) {
             />
             <SmallButton
               children={<MaterialIcons name="edit" size={20} color="black" />}
-              onPress={() => {
-                navigation.setParams({ project });
-                navigation.navigate("ProjectName");
-              }}
+              onPress={() => navigation.navigate("ProjectName", { project })}
               style={{
                 width: 30,
                 backgroundColor: "#4477FF",
