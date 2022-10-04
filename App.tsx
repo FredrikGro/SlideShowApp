@@ -37,7 +37,7 @@ export type RootStackParamList = {
   //Projects: undefined;
   SignIn: undefined;
   //ProjectName: undefined;
-  //Map: undefined;
+  Map: undefined;
   //SlideShow: undefined;
   Info: undefined;
 };
@@ -82,6 +82,11 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen name="Info" component={Info} />
+            <Stack.Screen
+              name="Map"
+              component={Map}
+              //options={{ headerRight: () => <HeaderMenuButton /> }}
+            />
             {/* <Stack.Screen
               name="ProjectNavigation"
               component={ProjectNavigation}
