@@ -15,6 +15,7 @@ interface ContextValue {
   editProject: (project: Project) => void;
   email: string;
   setEmailAsKey: (email: string) => void;
+  numberOfProjects: () => number;
 }
 
 const ProjectContext = createContext<ContextValue>({} as ContextValue);
@@ -98,6 +99,9 @@ export default function ProjectProvider({ children }: Props) {
   function editProject(project: Project) {
     setProjects((prev) => prev.map((p) => (p.id !== project.id ? p : project)));
   }
+  function numberOfProjects() {
+    return projects.length;
+  }
 
   return (
     <ProjectContext.Provider
@@ -108,6 +112,7 @@ export default function ProjectProvider({ children }: Props) {
         editProject,
         email,
         setEmailAsKey,
+        numberOfProjects,
       }}
     >
       {children}
