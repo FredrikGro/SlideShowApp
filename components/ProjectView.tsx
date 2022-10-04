@@ -33,7 +33,7 @@ export default function ProjectView({ navigation }: Props) {
         children={"Your projects are shown here"}
       />
       {projects.map((project) => (
-        <View key={project.id} style={[styles.mb40, styles.fdColumn]}>
+        <View key={project.id} style={[styles.mb40, styles.fdRow]}>
           <RegularButton
             onPress={() => navigation.navigate("SlideShow", { project })}
           >

@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   pt40: {
     paddingTop: 40,
   },
-  fdColumn: {
-    flexDirection: "column",
+  fdRow: {
+    flexDirection: "row",
   },
 });
