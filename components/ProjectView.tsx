@@ -11,7 +11,7 @@ import RegularText from "./Texts/RegularText";
 type Props = NativeStackScreenProps<DrawerParamList, "Projects">;
 
 export default function ProjectView({ navigation }: Props) {
-  const { projects } = useProject();
+  const { projects, removeFromProjects } = useProject();
 
   return projects.length <= 0 ? (
     <View style={[styles.containerTop, styles.pt40]}>
@@ -41,7 +41,7 @@ export default function ProjectView({ navigation }: Props) {
           </RegularButton>
           <SmallButton
             children={"A"}
-            onPress={undefined}
+            onPress={() => removeFromProjects(project)}
             style={{ width: 30, backgroundColor: "#BB2222" }}
           />
         </View>
