@@ -1,3 +1,4 @@
+import { MaterialIcons } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { View } from "react-native";
@@ -5,12 +6,13 @@ import { useProject } from "../contexts/ProjectContext";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 import { styles } from "../styles";
 import RegularButton from "./Button/RegularButton";
+import SmallButton from "./Button/SmallButton";
 import RegularText from "./Texts/RegularText";
 
 type Props = NativeStackScreenProps<DrawerParamList, "Projects">;
 
 export default function ProjectView({ navigation }: Props) {
-  const { projects } = useProject();
+  const { projects, removeFromProjects } = useProject();
 
   return projects.length <= 0 ? (
     <View style={[styles.containerTop, styles.pt40]}>
@@ -32,12 +34,17 @@ export default function ProjectView({ navigation }: Props) {
         children={"Your projects are shown here"}
       />
       {projects.map((project) => (
-        <View key={project.id} style={styles.mb40}>
+        <View key={project.id} style={[styles.mb40, styles.fdRow]}>
           <RegularButton
             onPress={() => navigation.navigate("SlideShow", { project })}
           >
             <RegularText children={project.projectName} />
           </RegularButton>
+          <SmallButton
+            children={<MaterialIcons name="delete" size={24} color="black" />}
+            onPress={() => removeFromProjects(project)}
+            style={{ width: 30, backgroundColor: "#DD2222" }}
+          />
         </View>
       ))}
     </View>
