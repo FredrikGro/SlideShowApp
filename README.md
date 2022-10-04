@@ -12,6 +12,10 @@
 - TouchableOpacity
 - StyleSheet
 - SafeAreaProvider
+- MapView,
+- Marker
+- PROVIDER_GOOGLE
+- Dimensions
 
 ## Använda Expo-komponenter
 
