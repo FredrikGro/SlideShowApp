@@ -29,8 +29,8 @@ export default function Map() {
         >
           <Marker
             coordinate={{
-              latitude: 57.72543315497602,
-              longitude: 12.937011100316834,
+              latitude: location.latitude,
+              longitude: location.longitude,
             }}
           />
         </MapView>
