@@ -27,10 +27,6 @@ export default function NewProject({ navigation }: Props, project?: Project) {
     projectName: string;
   };
 
-  // if (project) {
-  //   setImages(project.imagesURI);
-  // }
-
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
