@@ -14,7 +14,7 @@ import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
 type Props = NativeStackScreenProps<DrawerParamList, "NewProject">;
 
-export default function NewProject({ navigation }: Props, project?: Project) {
+export default function NewProject({ navigation }: Props) {
   const [images, setImages] = useState<string[]>([]);
 
   const { addToProjects, email } = useProject();
