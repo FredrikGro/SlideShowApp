@@ -8,12 +8,12 @@ import {
 import * as React from "react";
 import { colors } from "../../components/colors";
 import { Project } from "../../components/Models";
+import MyProfile from "../../screens/MyProfileScreen";
 import NewProject from "../../screens/NewProjectScreen";
 import ProjectName from "../../screens/ProjectNameScreen";
 import ProjectNavigation from "../../screens/ProjectNavigationScreen";
 import Projects from "../../screens/ProjectsScreen";
 import SlideShow from "../../screens/SlideShowScreen";
-import MyProfile from "../../screens/MyProfileScreen";
 
 const { primary } = colors;
 
@@ -24,7 +24,7 @@ export type DrawerParamList = {
   NewProject: { projectName: string };
   ProjectNavigation: undefined;
   Projects: undefined;
-  ProjectName: undefined;
+  ProjectName: undefined | { projectId: string };
   SlideShow: { project: Project };
   MyProfile: undefined;
 };
