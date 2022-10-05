@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
-import { View, Image } from "react-native";
+import { StyleSheet, View, Image, Dimensions } from "react-native";
 import { RootStackParamList } from "../App";
 import { styles } from "../styles";
 import GlobalButton from "../components/GlobalButton";
@@ -25,7 +25,7 @@ export default function Home({ navigation }: Props) {
     <View style={styles.container}>
       <Image
         source={require("../assets/psycadelic.gif")}
-        style={{ height: 700, width: 700, position: "absolute", bottom: -55 }}
+        style={imageStyle.bgImage}
       />
       <View style={{ position: "absolute", top: 20 }}>
         <RegularText style={{ color: "white" }}>
@@ -50,3 +50,10 @@ export default function Home({ navigation }: Props) {
     </View>
   );
 }
+const imageStyle = StyleSheet.create({
+  bgImage: {
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+    position: "absolute",
+  },
+});
