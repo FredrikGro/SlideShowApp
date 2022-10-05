@@ -31,6 +31,7 @@
 
 - Formik
 - Yup
+- Nanoid
 
 
 ## Krav
