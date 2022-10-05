@@ -45,7 +45,7 @@ export default function ProjectView({ navigation }: Props) {
               onPress={() => navigation.navigate("SlideShow", { project })}
               style={{ height: 80 }}
             >
-              <BigText children={project.projectName} />
+              {project.projectName}
             </RegularButton>
             <View>
               <SmallButton

@@ -6,6 +6,7 @@ import { customAlphabet } from "nanoid/non-secure";
 import React, { useCallback, useEffect, useState } from "react";
 import { FlatList, Image, SafeAreaView, StyleSheet, View } from "react-native";
 import "react-native-get-random-values";
+import RegularButton from "../components/Button/RegularButton";
 import GlobalButton from "../components/GlobalButton";
 import { Project } from "../components/Models";
 import BigText from "../components/Texts/BigText";
@@ -93,8 +94,7 @@ export default function NewProject({ navigation, route }: Props) {
             <Image source={{ uri: item }} style={styles.images} />
           )}
         />
-        <GlobalButton
-          text={"+ Create Project"}
+        <RegularButton
           onPress={
             route.params.projectId !== undefined
               ? () => {
@@ -126,7 +126,9 @@ export default function NewProject({ navigation, route }: Props) {
                   navigation.navigate("Projects");
                 }
           }
-        />
+        >
+          + Create Project
+        </RegularButton>
       </SafeAreaView>
 
       <Entypo
@@ -170,8 +172,8 @@ const styles = StyleSheet.create({
     bottom: 4,
   },
   images: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 150,
     padding: 10,
   },
 });
