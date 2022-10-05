@@ -30,7 +30,7 @@ export default function ProjectView({ navigation }: Props) {
       />
     </View>
   ) : (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "#fff" }}>
       <View style={[styles.containerTop, styles.pt40]}>
         <RegularText
           style={styles.mb40}
