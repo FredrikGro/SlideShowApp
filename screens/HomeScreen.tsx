@@ -3,11 +3,11 @@ import React from "react";
 import { StyleSheet, View, Image, Dimensions } from "react-native";
 import { RootStackParamList } from "../App";
 import { styles } from "../styles";
-import GlobalButton from "../components/GlobalButton";
 import * as Device from "expo-device";
 import { Audio } from "expo-av";
 import RegularText from "../components/Texts/RegularText";
 import BigText from "../components/Texts/BigText";
+import RegularButton from "../components/Button/RegularButton";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
@@ -36,16 +36,14 @@ export default function Home({ navigation }: Props) {
         Slideshow Composer
       </BigText>
       <View style={styles.mb40}>
-        <GlobalButton
-          text="Log In"
-          onPress={() => navigation.navigate("LogIn")}
-        />
+        <RegularButton onPress={() => navigation.navigate("LogIn")}>
+          Log In
+        </RegularButton>
       </View>
       <View style={styles.mb40}>
-        <GlobalButton
-          text="Sign In"
-          onPress={() => navigation.navigate("SignIn")}
-        />
+        <RegularButton onPress={() => navigation.navigate("SignIn")}>
+          Sign In
+        </RegularButton>
       </View>
     </View>
   );

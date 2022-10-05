@@ -6,6 +6,7 @@ import { customAlphabet } from "nanoid/non-secure";
 import React, { useState } from "react";
 import { FlatList, Image, SafeAreaView, StyleSheet, View } from "react-native";
 import "react-native-get-random-values";
+import RegularButton from "../components/Button/RegularButton";
 import GlobalButton from "../components/GlobalButton";
 import { Project } from "../components/Models";
 import BigText from "../components/Texts/BigText";
@@ -73,8 +74,7 @@ export default function NewProject({ navigation }: Props) {
           )}
           // keyExtractor={(item) => item.id}
         />
-        <GlobalButton
-          text={"+ Create Project"}
+        <RegularButton
           onPress={() => {
             let newProject: Project = {
               id: nanoid(),
@@ -89,7 +89,9 @@ export default function NewProject({ navigation }: Props) {
 
             navigation.navigate("Projects");
           }}
-        />
+        >
+          + Create Project
+        </RegularButton>
       </SafeAreaView>
 
       <Entypo

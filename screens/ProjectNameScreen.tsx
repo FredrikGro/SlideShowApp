@@ -2,7 +2,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useCallback, useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import GlobalButton from "../components/GlobalButton";
+import RegularButton from "../components/Button/RegularButton";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
@@ -26,10 +26,11 @@ export default function ProjectName({ navigation }: Props) {
         onChangeText={(val) => setProjectName(val)}
         style={styles.input}
       />
-      <GlobalButton
+      <RegularButton
         onPress={() => navigation.navigate("NewProject", { projectName })}
-        text="Submit"
-      />
+      >
+        Submit
+      </RegularButton>
     </View>
   );
 }
@@ -46,6 +47,6 @@ const styles = StyleSheet.create({
     borderColor: "#777",
     padding: 8,
     margin: 10,
-    width: 200,
+    width: 280,
   },
 });
