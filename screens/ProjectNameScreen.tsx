@@ -1,13 +1,13 @@
 import { useFocusEffect } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
-import React, { ReactNode, useCallback, useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+import React, { useCallback, useState } from "react";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import GlobalButton from "../components/GlobalButton";
+import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
 
-export default function ProjectName({ navigation }: Props) {
+export default function ProjectName({ navigation }: Props, projectId?: string) {
   const [projectName, setProjectName] = useState("");
 
   useFocusEffect(
