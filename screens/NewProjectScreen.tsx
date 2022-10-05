@@ -133,8 +133,8 @@ const styles = StyleSheet.create({
     bottom: 4,
   },
   images: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 150,
     padding: 10,
   },
 });
