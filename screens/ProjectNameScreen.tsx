@@ -7,7 +7,7 @@ import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
 
-export default function ProjectName({ navigation }: Props, projectId?: string) {
+export default function ProjectName({ navigation }: Props) {
   const [projectName, setProjectName] = useState("");
 
   useFocusEffect(

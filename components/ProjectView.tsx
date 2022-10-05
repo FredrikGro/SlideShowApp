@@ -2,6 +2,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { useProject } from "../contexts/ProjectContext";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 import { styles } from "../styles";
@@ -29,38 +30,40 @@ export default function ProjectView({ navigation }: Props) {
       />
     </View>
   ) : (
-    <View style={[styles.containerTop, styles.pt40]}>
-      <RegularText
-        style={styles.mb40}
-        children={"Your projects are shown here"}
-      />
-      {projects.map((project) => (
-        <View
-          key={project.id}
-          style={[styles.mb40, styles.fdRow, { position: "relative" }]}
-        >
-          <RegularButton
-            onPress={() => navigation.navigate("SlideShow", { project })}
-            style={{ height: 80 }}
+    <ScrollView>
+      <View style={[styles.containerTop, styles.pt40]}>
+        <RegularText
+          style={styles.mb40}
+          children={"Your projects are shown here"}
+        />
+        {projects.map((project) => (
+          <View
+            key={project.id}
+            style={[styles.mb40, styles.fdRow, { position: "relative" }]}
           >
-            <BigText children={project.projectName} />
-          </RegularButton>
-          <View>
-            <SmallButton
-              children={<MaterialIcons name="delete" size={20} color="black" />}
-              onPress={() => removeFromProjects(project)}
-              style={styles.deleteProjectButton}
-            />
-            <SmallButton
-              children={<MaterialIcons name="edit" size={20} color="black" />}
-              onPress={() =>
-                navigation.navigate("ProjectName", { projectId: project.id })
-              }
-              style={styles.editProjectButton}
-            />
+            <RegularButton
+              onPress={() => navigation.navigate("SlideShow", { project })}
+              style={{ height: 80 }}
+            >
+              <BigText children={project.projectName} />
+            </RegularButton>
+            <View>
+              <SmallButton
+                children={
+                  <MaterialIcons name="delete" size={20} color="black" />
+                }
+                onPress={() => removeFromProjects(project)}
+                style={styles.deleteProjectButton}
+              />
+              <SmallButton
+                children={<MaterialIcons name="edit" size={20} color="black" />}
+                onPress={() => navigation.navigate("ProjectName")}
+                style={styles.editProjectButton}
+              />
+            </View>
           </View>
-        </View>
-      ))}
-    </View>
+        ))}
+      </View>
+    </ScrollView>
   );
 }

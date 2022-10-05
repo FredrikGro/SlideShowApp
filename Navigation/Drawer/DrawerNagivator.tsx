@@ -24,7 +24,7 @@ export type DrawerParamList = {
   NewProject: { projectName: string };
   ProjectNavigation: undefined;
   Projects: undefined;
-  ProjectName: undefined | { projectId: string };
+  ProjectName: undefined;
   SlideShow: { project: Project };
   MyProfile: undefined;
 };
