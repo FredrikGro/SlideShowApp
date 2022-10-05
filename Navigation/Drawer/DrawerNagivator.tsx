@@ -21,7 +21,7 @@ export type DrawerParamList = {
   HomeDrawer: undefined;
   Logout: undefined;
   Map: undefined;
-  NewProject: { projectName: string } | { project: Project };
+  NewProject: { projectName: string; projectId?: string };
   ProjectNavigation: undefined;
   Projects: undefined;
   ProjectName: undefined | { project: Project };

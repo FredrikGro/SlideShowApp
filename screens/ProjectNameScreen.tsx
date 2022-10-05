@@ -1,21 +1,32 @@
 import { useFocusEffect } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import GlobalButton from "../components/GlobalButton";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
 
-export default function ProjectName({ navigation }: Props) {
+export default function ProjectName({ navigation, route }: Props) {
   const [projectName, setProjectName] = useState("");
+  const [projectId, setProjectId] = useState("");
 
   useFocusEffect(
     useCallback(() => {
-      const unsubscribe = setProjectName("");
-      return () => unsubscribe;
+      const unsubscribe = () => {
+        setProjectName("");
+        setProjectId("");
+      };
+      return unsubscribe;
     }, [])
   );
+
+  useEffect(() => {
+    if (route.params?.project !== undefined) {
+      setProjectName(route.params?.project?.projectName);
+      setProjectId(route.params.project.id);
+    }
+  }, [route.params]);
 
   return (
     <View style={styles.container}>
@@ -27,7 +38,12 @@ export default function ProjectName({ navigation }: Props) {
         style={styles.input}
       />
       <GlobalButton
-        onPress={() => navigation.navigate("NewProject", { projectName })}
+        onPress={
+          route.params?.project !== undefined
+            ? () =>
+                navigation.navigate("NewProject", { projectName, projectId })
+            : () => navigation.navigate("NewProject", { projectName })
+        }
         text="Submit"
       />
     </View>
