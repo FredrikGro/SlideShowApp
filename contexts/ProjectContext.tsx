@@ -66,7 +66,11 @@ export default function ProjectProvider({ children }: Props) {
   }
 
   function editProject(project: Project) {
-    setProjects((prev) => prev.map((p) => (p.id !== project.id ? p : project)));
+    if (project !== undefined) {
+      setProjects((prev) =>
+        prev.map((p) => (p.id !== project.id ? p : project))
+      );
+    }
   }
   function numberOfProjects() {
     return projects.length;

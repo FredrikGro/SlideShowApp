@@ -57,7 +57,9 @@ export default function ProjectView({ navigation }: Props) {
               />
               <SmallButton
                 children={<MaterialIcons name="edit" size={20} color="black" />}
-                onPress={() => navigation.navigate("ProjectName")}
+                onPress={() =>
+                  navigation.navigate("ProjectName", { project: project })
+                }
                 style={styles.editProjectButton}
               />
             </View>

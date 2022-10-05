@@ -1,9 +1,9 @@
 import { AntDesign, Entypo } from "@expo/vector-icons";
-import { useRoute } from "@react-navigation/native";
+import { useFocusEffect, useRoute } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import * as ImagePicker from "expo-image-picker";
 import { customAlphabet } from "nanoid/non-secure";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FlatList, Image, SafeAreaView, StyleSheet, View } from "react-native";
 import "react-native-get-random-values";
 import RegularButton from "../components/Button/RegularButton";
@@ -15,16 +15,37 @@ import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
 type Props = NativeStackScreenProps<DrawerParamList, "NewProject">;
 
-export default function NewProject({ navigation }: Props) {
+export default function NewProject({ navigation, route }: Props) {
   const [images, setImages] = useState<string[]>([]);
+  const [project, setProject] = useState<Project>();
 
-  const { addToProjects, email } = useProject();
+  const { projects, addToProjects, editProject, email } = useProject();
+
+  useFocusEffect(
+    useCallback(() => {
+      const unsubscribe = () => {
+        setImages([]);
+      };
+      return unsubscribe;
+    }, [])
+  );
+
+  useEffect(() => {
+    if (route.params?.projectId !== undefined) {
+      let result = projects.find((p) => p.id === route.params.projectId);
+
+      if (result !== undefined) {
+        setImages(result.imagesURI);
+        setProject(result);
+      }
+    }
+  }, [route.params]);
 
   const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
 
-  const route = useRoute();
+  const newRoute = useRoute();
 
-  const { projectName } = route.params as {
+  const { projectName } = newRoute.params as {
     projectName: string;
   };
 
@@ -72,23 +93,39 @@ export default function NewProject({ navigation }: Props) {
           renderItem={({ item }) => (
             <Image source={{ uri: item }} style={styles.images} />
           )}
-          // keyExtractor={(item) => item.id}
         />
         <RegularButton
-          onPress={() => {
-            let newProject: Project = {
-              id: nanoid(),
-              userEmail: email,
-              projectName: projectName,
-              imagesURI: images,
-            };
+          onPress={
+            route.params.projectId !== undefined
+              ? () => {
+                  if (project !== undefined) {
+                    let editedProject: Project = {
+                      id: project.id,
+                      userEmail: project.userEmail,
+                      projectName: projectName,
+                      imagesURI: [...images],
+                    };
+                    editProject(editedProject);
+                  }
+                  setProject(undefined);
 
-            addToProjects(newProject);
+                  navigation.navigate("Projects");
+                }
+              : () => {
+                  let newProject: Project = {
+                    id: nanoid(),
+                    userEmail: email,
+                    projectName: projectName,
+                    imagesURI: images,
+                  };
 
-            setImages([]);
+                  addToProjects(newProject);
 
-            navigation.navigate("Projects");
-          }}
+                  setImages([]);
+
+                  navigation.navigate("Projects");
+                }
+          }
         >
           + Create Project
         </RegularButton>

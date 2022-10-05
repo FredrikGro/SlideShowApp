@@ -21,10 +21,10 @@ export type DrawerParamList = {
   HomeDrawer: undefined;
   Logout: undefined;
   Map: undefined;
-  NewProject: { projectName: string };
+  NewProject: { projectName: string; projectId?: string };
   ProjectNavigation: undefined;
   Projects: undefined;
-  ProjectName: undefined;
+  ProjectName: undefined | { project: Project };
   SlideShow: { project: Project };
   MyProfile: undefined;
 };
