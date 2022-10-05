@@ -49,31 +49,12 @@ export default function ProjectView({ navigation }: Props) {
             <SmallButton
               children={<MaterialIcons name="delete" size={20} color="black" />}
               onPress={() => removeFromProjects(project)}
-              style={{
-                width: 30,
-                backgroundColor: "#DD2222",
-                position: "absolute",
-                right: 0,
-                top: 40,
-                borderBottomRightRadius: 15,
-                borderBottomLeftRadius: 0,
-                borderTopLeftRadius: 0,
-                borderTopRightRadius: 0,
-              }}
+              style={styles.deleteProjectButton}
             />
             <SmallButton
               children={<MaterialIcons name="edit" size={20} color="black" />}
               onPress={undefined}
-              style={{
-                width: 30,
-                backgroundColor: "#4477FF",
-                position: "absolute",
-                right: 0,
-                borderBottomRightRadius: 0,
-                borderBottomLeftRadius: 0,
-                borderTopLeftRadius: 0,
-                borderTopRightRadius: 15,
-              }}
+              style={styles.editProjectButton}
             />
           </View>
         </View>
