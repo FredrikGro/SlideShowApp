@@ -108,6 +108,9 @@ export default function DrawerNavigator() {
             return <MaterialIcons name="folder" size={24} color="black" />;
           },
           drawerItemStyle: { display: "none" },
+          headerStyle: {
+            backgroundColor: primary,
+          },
         }}
       />
       <Drawer.Screen
@@ -119,6 +122,9 @@ export default function DrawerNavigator() {
             return <MaterialIcons name="folder" size={24} color="black" />;
           },
           drawerItemStyle: { display: "none" },
+          headerStyle: {
+            backgroundColor: primary,
+          },
         }}
       />
       <Drawer.Screen
