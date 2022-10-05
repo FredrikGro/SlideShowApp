@@ -54,7 +54,7 @@ export default function NewProject({ navigation }: Props) {
   };
 
   return (
-    <View style={{ flex: 1, flexDirection: "row" }}>
+    <View style={styles.container}>
       <SafeAreaView
         style={{
           flex: 1,
