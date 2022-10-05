@@ -31,57 +31,26 @@ export default function ProjectProvider({ children }: Props) {
 
   useEffect(() => {
     if (!isFirstRender) {
-      console.log(
-        "Inside useEffects IF-statement, meaning it is not first render"
-      ); // TODO: Remove console.log before launch
-
       if (projects.length > 0) {
-        console.log(
-          "Inside if statement, meaning projects.length > 0, adding to store content for email " +
-            email
-        ); // TODO: Remove console.log before launch
-
         let jsonString = JSON.stringify(projects);
         SecureStore.setItemAsync(email, jsonString);
-      } else {
-        console.log(
-          "Inside else statement, meaning projects.length <= 0, deleting store content for email " +
-            email
-        ); // TODO: Remove console.log before launch
-        SecureStore.deleteItemAsync(email);
-      }
+      } else SecureStore.deleteItemAsync(email);
     }
   }, [projects]);
 
   useEffect(() => {
     if (!isFirstRender && email != "") {
-      console.log(
-        "Inside useEffects IF-statement, meaning it is not first render, and email is != empty string"
-      ); // TODO: Remove console.log before launch
-
       settingProjectsAfterEmailUpdate();
-    } else {
-      console.log(
-        "Inside useEffects ELSE-statement, meaning it is first render"
-      ); // TODO: Remove console.log before launch
-
-      setIsFirstRender(false);
-    }
+    } else setIsFirstRender(false);
   }, [email]);
 
   async function settingProjectsAfterEmailUpdate() {
-    console.log("Inside settingProjectsAfterEmailUpdate"); // TODO: Remove console.log before launch
     let result = await SecureStore.getItemAsync(email);
 
     if (result != null) {
-      console.log("Inside if statement where result != null"); // TODO: Remove console.log before launch
       let parsed: Project[] = JSON.parse(result);
-      console.log("result has been parsed " + parsed);
       setProjects(parsed);
-    } else {
-      console.log("Inside else statement where result = null"); // TODO: Remove console.log before launch
-      setProjects([]);
-    }
+    } else setProjects([]);
   }
 
   function setEmailAsKey(email: string) {
