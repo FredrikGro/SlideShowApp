@@ -2,7 +2,7 @@ import React, { useState, FunctionComponent } from "react";
 import styled from "styled-components/native";
 import { InputProps } from "./types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import {View} from "react-native";
+import { View } from "react-native";
 
 import { colors } from "../colors";
 import SmallText from "../Texts/SmallText";
@@ -68,9 +68,9 @@ const StylesTextInput: FunctionComponent<InputProps> = ({
   return (
     <InputWrapper>
       <LeftIcon>
-        <MaterialCommunityIcons name={icon} size={30} color={accent} />
+        <MaterialCommunityIcons name={icon} size={30} color={black} />
       </LeftIcon>
-      <View style={{justifyContent: "space-between", flexDirection: "row"}}>
+      <View style={{ justifyContent: "space-between", flexDirection: "row" }}>
         <SmallText>{label}</SmallText>
         {error ? <SmallText>{error}</SmallText> : null}
       </View>
