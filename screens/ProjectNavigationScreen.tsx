@@ -1,8 +1,8 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { View } from "react-native";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
-import GlobalButton from "../components/GlobalButton";
 import { styles } from "../styles";
+import RegularButton from "../components/Button/RegularButton";
 
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectNavigation">;
 
@@ -10,16 +10,14 @@ export default function ProjectNavigation({ navigation }: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.mb40}>
-        <GlobalButton
-          text=" + New Project"
-          onPress={() => navigation.navigate("ProjectName")}
-        />
+        <RegularButton onPress={() => navigation.navigate("ProjectName")}>
+          + New Project"
+        </RegularButton>
       </View>
       <View style={styles.mb40}></View>
-      <GlobalButton
-        text=" Open Project"
-        onPress={() => navigation.navigate("Projects")}
-      />
+      <RegularButton onPress={() => navigation.navigate("Projects")}>
+        Open Project
+      </RegularButton>
     </View>
   );
 }
