@@ -1,8 +1,11 @@
 import { useFocusEffect } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Formik } from "formik";
 import React, { useCallback, useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import RegularButton from "../components/Button/RegularButton";
+import StylesTextInput from "../components/Input/StylesTextInput";
+import { ProjectNameValidationSchema } from "../components/ProjectNameValidationSchema";
 import { DrawerParamList } from "../Navigation/Drawer/DrawerNagivator";
 
 type Props = NativeStackScreenProps<DrawerParamList, "ProjectName">;
@@ -31,7 +34,51 @@ export default function ProjectName({ navigation, route }: Props) {
   return (
     <View style={styles.container}>
       <Text>Add Project Name</Text>
-      <TextInput
+      <Formik
+        validationSchema={ProjectNameValidationSchema}
+        initialValues={{
+          projectName: "",
+        }}
+        onSubmit={(values) => {
+          console.log(values.projectName);
+          setProjectName(values.projectName);
+          console.log(projectName);
+          if (route.params?.project !== undefined) {
+            navigation.navigate("NewProject", { projectName, projectId });
+            navigation.setParams({ project: undefined });
+          } else {
+            navigation.navigate("NewProject", { projectName });
+          }
+        }}
+      >
+        {({
+          handleChange,
+          handleBlur,
+          touched,
+          handleSubmit,
+          values,
+          errors,
+        }) => {
+          const { projectName } = values;
+          return (
+            <View style={styles.container}>
+              <StylesTextInput
+                label="Project Name"
+                icon="text"
+                value={projectName}
+                error={touched.projectName && errors.projectName}
+                onChangeText={handleChange("projectName")}
+                onBlur={handleBlur("projectName")}
+                placeholder="Project Name..."
+                style={{ marginBottom: 20 }}
+              />
+              <RegularButton onPress={handleSubmit}>Submit</RegularButton>
+            </View>
+          );
+        }}
+      </Formik>
+
+      {/*  <TextInput
         value={projectName}
         placeholder="Project Name..."
         onChangeText={(val) => setProjectName(val)}
@@ -50,7 +97,7 @@ export default function ProjectName({ navigation, route }: Props) {
         }
       >
         Submit
-      </RegularButton>
+      </RegularButton> */}
     </View>
   );
 }
