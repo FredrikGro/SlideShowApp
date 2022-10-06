@@ -1,5 +1,5 @@
 import { AntDesign, Entypo } from "@expo/vector-icons";
-import { useFocusEffect, useRoute } from "@react-navigation/native";
+import { useFocusEffect } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import * as ImagePicker from "expo-image-picker";
 import { customAlphabet } from "nanoid/non-secure";
@@ -7,7 +7,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { FlatList, Image, SafeAreaView, StyleSheet, View } from "react-native";
 import "react-native-get-random-values";
 import RegularButton from "../components/Button/RegularButton";
-import GlobalButton from "../components/GlobalButton";
 import { Project } from "../components/Models";
 import BigText from "../components/Texts/BigText";
 import { useProject } from "../contexts/ProjectContext";
@@ -25,6 +24,7 @@ export default function NewProject({ navigation, route }: Props) {
     useCallback(() => {
       const unsubscribe = () => {
         setImages([]);
+        setProject(undefined);
       };
       return unsubscribe;
     }, [])
@@ -40,14 +40,6 @@ export default function NewProject({ navigation, route }: Props) {
       }
     }
   }, [route.params]);
-
-  const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
-
-  const newRoute = useRoute();
-
-  const { projectName } = newRoute.params as {
-    projectName: string;
-  };
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -86,7 +78,7 @@ export default function NewProject({ navigation, route }: Props) {
           marginBottom: 40,
         }}
       >
-        <BigText>{projectName}</BigText>
+        <BigText>{route.params.projectName}</BigText>
         <FlatList
           data={images}
           style={{ paddingTop: 10 }}
@@ -102,26 +94,34 @@ export default function NewProject({ navigation, route }: Props) {
                     let editedProject: Project = {
                       id: project.id,
                       userEmail: project.userEmail,
-                      projectName: projectName,
+                      projectName: route.params.projectName,
                       imagesURI: [...images],
                     };
+
                     editProject(editedProject);
                   }
-                  setProject(undefined);
+
+                  navigation.setParams({
+                    projectId: undefined,
+                    projectName: undefined,
+                  });
 
                   navigation.navigate("Projects");
                 }
               : () => {
+                  const nanoid = customAlphabet(
+                    "abcdefghijklmnopqrstuvwxyz0123456789",
+                    10
+                  );
+
                   let newProject: Project = {
                     id: nanoid(),
                     userEmail: email,
-                    projectName: projectName,
+                    projectName: route.params.projectName,
                     imagesURI: images,
                   };
 
                   addToProjects(newProject);
-
-                  setImages([]);
 
                   navigation.navigate("Projects");
                 }
