@@ -55,15 +55,22 @@ export default function NewProject({ navigation, route }: Props) {
   };
 
   const takePhoto = async () => {
-    let camera_result = await ImagePicker.launchCameraAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
 
-    if (!camera_result.cancelled) {
-      setImages([...images, camera_result.uri]);
+    if (status === "granted") {
+      console.log(status);
+      let camera_result = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+      if (!camera_result.cancelled) {
+        setImages([...images, camera_result.uri]);
+      }
+    } else {
+      alert("You have to give permission to use the camera");
     }
   };
 
