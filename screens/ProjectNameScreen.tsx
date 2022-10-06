@@ -40,9 +40,13 @@ export default function ProjectName({ navigation, route }: Props) {
       <RegularButton
         onPress={
           route.params?.project !== undefined
-            ? () =>
-                navigation.navigate("NewProject", { projectName, projectId })
-            : () => navigation.navigate("NewProject", { projectName })
+            ? () => {
+                navigation.navigate("NewProject", { projectName, projectId });
+                navigation.setParams({ project: undefined });
+              }
+            : () => {
+                navigation.navigate("NewProject", { projectName });
+              }
         }
       >
         Submit

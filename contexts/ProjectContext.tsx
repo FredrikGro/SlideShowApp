@@ -39,19 +39,18 @@ export default function ProjectProvider({ children }: Props) {
   }, [projects]);
 
   useEffect(() => {
+    async function settingProjectsAfterEmailUpdate() {
+      let result = await SecureStore.getItemAsync(email);
+
+      if (result != null) {
+        let parsed: Project[] = JSON.parse(result);
+        setProjects(parsed);
+      } else setProjects([]);
+    }
     if (!isFirstRender && email != "") {
       settingProjectsAfterEmailUpdate();
     } else setIsFirstRender(false);
   }, [email]);
-
-  async function settingProjectsAfterEmailUpdate() {
-    let result = await SecureStore.getItemAsync(email);
-
-    if (result != null) {
-      let parsed: Project[] = JSON.parse(result);
-      setProjects(parsed);
-    } else setProjects([]);
-  }
 
   function setEmailAsKey(email: string) {
     setEmail(email.replace("@", "_"));
@@ -72,6 +71,7 @@ export default function ProjectProvider({ children }: Props) {
       );
     }
   }
+
   function numberOfProjects() {
     return projects.length;
   }
