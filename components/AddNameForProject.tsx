@@ -18,9 +18,9 @@ export default function AddNameForProject({ navigation }: Props) {
         initialValues={{
           projectName: "",
         }}
-        onSubmit={(values) => {
+        onSubmit={(values, { resetForm }) => {
           navigation.navigate("NewProject", { pName: values.projectName });
-          values.projectName = "";
+          resetForm();
         }}
       >
         {({

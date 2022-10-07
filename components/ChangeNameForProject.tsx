@@ -18,13 +18,13 @@ export default function ChangeNameForProject({ navigation, route }: Props) {
         initialValues={{
           projectName: route.params!.project.projectName,
         }}
-        onSubmit={(values) => {
+        onSubmit={(values, { resetForm }) => {
           navigation.navigate("NewProject", {
             pName: values.projectName,
             project: route.params!.project,
           });
           navigation.setParams({ project: undefined });
-          values.projectName = "";
+          resetForm();
         }}
       >
         {({
