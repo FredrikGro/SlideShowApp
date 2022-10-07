@@ -18,7 +18,7 @@ export default function NewProject({ navigation, route }: Props) {
   const [images, setImages] = useState<string[]>([]);
   const [project, setProject] = useState<Project>();
 
-  const { projects, addToProjects, editProject, email } = useProject();
+  const { addToProjects, editProject, email } = useProject();
 
   useFocusEffect(
     useCallback(() => {
@@ -31,13 +31,9 @@ export default function NewProject({ navigation, route }: Props) {
   );
 
   useEffect(() => {
-    if (route.params?.projectId !== undefined) {
-      let result = projects.find((p) => p.id === route.params.projectId);
-
-      if (result !== undefined) {
-        setImages(result.imagesURI);
-        setProject(result);
-      }
+    if (route.params?.project !== undefined) {
+      setImages(route.params?.project.imagesURI);
+      setProject(route.params?.project);
     }
   }, [route.params]);
 
@@ -85,7 +81,7 @@ export default function NewProject({ navigation, route }: Props) {
           marginBottom: 40,
         }}
       >
-        <BigText>{route.params.projectName}</BigText>
+        <BigText>{route.params.pName}</BigText>
         <FlatList
           data={images}
           style={{ paddingTop: 10 }}
@@ -95,22 +91,23 @@ export default function NewProject({ navigation, route }: Props) {
         />
         <RegularButton
           onPress={
-            route.params.projectId !== undefined
+            project !== undefined
               ? () => {
-                  if (project !== undefined) {
-                    let editedProject: Project = {
-                      id: project.id,
-                      userEmail: project.userEmail,
-                      projectName: route.params.projectName,
-                      imagesURI: [...images],
-                    };
+                  let editedProject: Project = {
+                    id: project.id,
+                    userEmail: project.userEmail,
+                    projectName:
+                      route.params.pName !== undefined
+                        ? route.params.pName
+                        : "",
+                    imagesURI: [...images],
+                  };
 
-                    editProject(editedProject);
-                  }
+                  editProject(editedProject);
 
                   navigation.setParams({
-                    projectId: undefined,
-                    projectName: undefined,
+                    project: undefined,
+                    pName: undefined,
                   });
 
                   navigation.navigate("Projects");
@@ -124,7 +121,10 @@ export default function NewProject({ navigation, route }: Props) {
                   let newProject: Project = {
                     id: nanoid(),
                     userEmail: email,
-                    projectName: route.params.projectName,
+                    projectName:
+                      route.params.pName !== undefined
+                        ? route.params.pName
+                        : "",
                     imagesURI: images,
                   };
 
