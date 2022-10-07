@@ -96,10 +96,7 @@ export default function NewProject({ navigation, route }: Props) {
                   let editedProject: Project = {
                     id: project.id,
                     userEmail: project.userEmail,
-                    projectName:
-                      route.params.pName !== undefined
-                        ? route.params.pName
-                        : "",
+                    projectName: route.params.pName,
                     imagesURI: [...images],
                   };
 
