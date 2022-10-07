@@ -22,7 +22,6 @@ export default function SignIn({ navigation }: Props) {
         confirmPassword: "",
       }}
       onSubmit={(values, formikActions) => {
-        console.log(values);
         setEmailAsKey(values.email);
         navigation.navigate("HomeDrawer");
       }}
